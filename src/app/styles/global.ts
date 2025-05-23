@@ -1,5 +1,5 @@
 import { css } from "@emotion/react"
-import { colors } from "./colors.ts"
+import { colors } from "@app/styles/colors.ts";
 
 export const globalStyles = css`
   :root {
@@ -36,7 +36,7 @@ export const globalStyles = css`
 
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
     background-color: var(--background-color);
     color: var(--text-color);
     line-height: 1.5;
@@ -55,6 +55,10 @@ export const globalStyles = css`
 
   button {
     cursor: pointer;
+  }
+
+  ul {
+    list-style: none;
   }
 
   /* Scrollbar styling */

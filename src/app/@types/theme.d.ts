@@ -5,3 +5,7 @@ export type FontsTypes = {
 export type ColorsTypes = {
   [key: string]: string;
 };
+
+export type BreakpointsTypes = {
+  [key: string]: string;
+};
