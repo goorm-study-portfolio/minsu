@@ -1,15 +1,20 @@
 import { AppRouterProvider, AppThemeProvider } from "@app/providers";
 import { Global } from "@emotion/react";
 import { globalStyles } from "@app/styles/global.ts";
+import { ThemeProvider } from "@shared/components/ThemProvider.tsx";
 
 function App() {
 
   return (
-    <AppThemeProvider>
+    <>
       <Global styles={globalStyles} />
-      <AppRouterProvider />
-    </AppThemeProvider>
-  )
+      <AppThemeProvider>
+        <ThemeProvider>
+          <AppRouterProvider />
+        </ThemeProvider>
+      </AppThemeProvider>
+    </>
+  );
 }
 
-export default App
+export default App;
