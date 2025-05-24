@@ -1,10 +1,21 @@
+import Header from "@home/components/Header.tsx";
+import Hero from "@home/components/Hero.tsx";
+import AboutMe from "@home/components/AboutMe.tsx";
+import Skills from "@home/components/Skills.tsx";
+import Archiving from "@home/components/Archiving.tsx";
+import Projects from "@home/components/Projects.tsx";
+
 const HomePage = () => {
   return (
     <>
-      <h1>Home Page</h1>
-      <p>Welcome to the home page!</p>
+      <Header />
+      <Hero />
+      <AboutMe />
+      <Skills />
+      <Archiving />
+      <Projects />
     </>
   );
-}
+};
 
 export default HomePage;
