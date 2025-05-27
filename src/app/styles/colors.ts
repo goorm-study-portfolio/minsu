@@ -1,7 +1,8 @@
 import type { ColorsTypes } from "@app/@types/theme";
 
 export const colors: ColorsTypes = {
-  primary: "#3b82f6",
+  /*primary: "#3b82f6",*/
+  primary: "#10b981",
   primaryDark: "#2563eb",
   secondary: "#6b7280",
   success: "#10b981",
