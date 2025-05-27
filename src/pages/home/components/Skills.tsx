@@ -13,6 +13,7 @@ const skillCategories = [
     skills: [
       "React",
       "styled-components",
+      "Emotion CSS",
       "Zustand",
       "TanstackQuery",
       "Redux-toolkit",
