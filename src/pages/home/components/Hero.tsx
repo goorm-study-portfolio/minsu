@@ -7,9 +7,10 @@ import ImgProfileFour from "@img/img-profile-four.png";
 
 const FADE_DURATION = 300;
 const DISPLAY_DURATION = 400;
+const profileImages = [ImgProfileTwo, ImgProfileThree, ImgProfileFour];
+const INTRO_TEXT = "성장의 물살을 거스르는\n연어와 같은 개발자 장민수입니다";
 
 const Hero = () => {
-  const profileImages = [ImgProfileTwo, ImgProfileThree, ImgProfileFour];
   const [currentIndex, setCurrentIndex] = useState(0);
   const [prevIndex, setPrevIndex] = useState<number | null>(null);
   const [showIntro, setShowIntro] = useState(false);
@@ -34,7 +35,7 @@ const Hero = () => {
     }, FADE_DURATION + DISPLAY_DURATION);
 
     return () => clearTimeout(timerRef.current!);
-  }, [currentIndex, profileImages.length]);
+  }, [currentIndex]);
 
 
   return (
@@ -57,7 +58,7 @@ const Hero = () => {
             isFinal={currentIndex === profileImages.length - 1}
           />
         </ProfileImageWrapper>
-        <IntroText visible={showIntro}>안녕하세요. 열정적인 개발자입니다.</IntroText>
+        <IntroText visible={showIntro}>{INTRO_TEXT}</IntroText>
       </Container>
 
       <Gradient />
@@ -149,18 +150,19 @@ const ProfileImageWrapper = styled.div`
 `;
 
 const IntroText = styled.h1<{ visible: boolean }>`
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: bold;
   line-height: 1.2;
   margin-bottom: 1rem;
   color: var(--text-color);
   opacity: 0;
+  white-space: pre-wrap;
   animation: ${slideUp} 0.8s ease-out forwards;
   animation-delay: 1s;
   animation-play-state: ${(props) => (props.visible ? "running" : "paused")};
 
   @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
-    font-size: 3rem;
+    font-size: 2rem;
   }
 `;
 
