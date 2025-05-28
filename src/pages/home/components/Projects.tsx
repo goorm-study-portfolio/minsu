@@ -9,6 +9,7 @@ import ImgBuddy from "@img/img-buddy.png";
 import ImgCohaus from "@img/img-cohaus.png";
 import ImgPureum from "@img/img-pureum.png";
 import ImgYourMode from "@img/img-yourmode.png";
+import ImgStock from "@img/img-stock.png";
 
 type Project = {
   id: number
@@ -52,6 +53,32 @@ const projects: Project[] = [
   },
   {
     id: 3,
+    title: "Portfolio",
+    description: "나만의 포트폴리오",
+    thumbnail: IcPlaceHolder,
+    technologies: ["React", "Emotion CSS", "TypeScript", "Nest.js", "PostgreSQL", "Vercel", "AWS"],
+    summary: "나만의 개인 포트폴리오 제작을 위한 개인 프로젝트입니다.",
+    features: ["AWS 배포", "포트폴리오 프로젝트 추가, 삭제, 수정 기능", "미디어 쿼리를 통한 반응형 UI", "Light/Dark 모드 적용"],
+    contribution: "프론트엔드 개발 100%, 백엔드 설계 및 API 개발 예정, AWS 배포 예정",
+    githubLink: "https://github.com/goorm-study-portfolio/minsu",
+    demoLink: "https://example.com",
+    lessons: "대용량 데이터 처리와 렌더링 최적화 기법을 습득했습니다.",
+  },
+  {
+    id: 4,
+    title: "Stock Simulator",
+    description: "주린이를 위한 주식 시뮬레이션",
+    thumbnail: ImgStock,
+    technologies: ["React", "Next.js", "TypeScript", "Tailwind CSS", "React-Hook-Form", "TanstackQuery", "Recharts", "Vercel"],
+    summary: "주식 초보를 위한 주식 시뮬레이션 서비스입니다.\n슬라이딩 윈도우를 통해 SMA(단순 이동 평균)와 크로스 신호를 계산하고, 이를 기반으로 주식 차트를 제공합니다.\n또한, 캔들 차트와 KMP 패턴 매칭을 통해 V자 패턴을 분석하고 Greedy 알고리즘을 통해 최대 수익 기회를 제공합니다.\n이 과정에서 사용자는 주식 차트를 통해 매매 신호와 현재 추세를 파악할 수 있습니다.\n용어 가이드를 제공하여 주식 초보자도 쉽게 이해할 수 있도록 하였습니다.",
+    features: ["종목별 과거 주식 차트 - 거래량, SMA, 크로스 신호, 캔들 ", "차트 분석 요약 - 최대 수익 기회, 매매 신호, 현재 추세 등", "용어 가이드", "시뮬레이션 결과 - 최대 수익률, 크로스 신호, V자 패턴 발견"],
+    contribution: "종목별 차트, 캔들 UI 구현 및 차트 분석 요약 기능 개발\n슬라이딩 윈도우를 통한 SMA, 크로스 신호 계산\nKMP 패턴 매칭 알고리즘을 통한 V자 패턴 분석 기능\nGreedy 알고리즘을 통한 최대 수익률 계산",
+    githubLink: "https://github.com/Tnalxmsk/stock-simulator",
+    demoLink: "https://stock-simulator-two.vercel.app/",
+    lessons: "대용량 데이터 처리와 렌더링 최적화 기법을 습득했습니다.",
+  },
+  {
+    id: 5,
     title: "Cohaus",
     description: "취약계층 주거 지원 플랫폼",
     thumbnail: ImgCohaus,
@@ -63,7 +90,7 @@ const projects: Project[] = [
     lessons: "안드로이드 공식 문서를 바탕으로 클린 아키텍처와 MVVM 패턴을 적용하여 개발하였습니다.\n이 과정에서 안드로이드 앱 개발의 구조화와 유지보수성을 높이는 방법을 배웠습니다.\n또한, Hilt를 사용하여 의존성 주입을 구현하고, Retrofit과 Coroutine, Flow를 활용하여 비동기 API 통신을 효율적으로 처리하는 방법을 익혔습니다.\n최대한 공식문서에서 권장하는 개발 가이드라인을 준수하기 위해 노력하였고, 그 결과물 중 AAC와 DataStore 등이 있으며, Flow를 학습한 후 DataStore 적용하고 기존 LiveData를 제거하며 DataSource, Repository, ViewModel, View Class 등을 점진적으로 개선시켜 나가는 과정은 기존 코드를 리팩토링하는 소중한 경험이 되었습니다.",
   },
   {
-    id: 4,
+    id: 6,
     title: "푸름",
     description: "스마트폰 사용 습관 개선 서비스",
     thumbnail: ImgPureum,
@@ -75,7 +102,7 @@ const projects: Project[] = [
     lessons: "대학교 진학 후 1학년 처음으로 진행한 안드로이드 프로젝트입니다. 이 프로젝트를 통해 협업과 소통 방식의 중요성 그리고 개발 용어 및 기술에 대해 다양하게 배울 수 있었습니다. 특히, 안드로이드 개발에 필요한 필수적인 기술 스택 DataBinding, Hilt, Coroutine, ViewModel 등을 알 수 있었고, 공식 문서의 중요성을 느낄 수 있었습니다.",
   },
   {
-    id: 5,
+    id: 7,
     title: "YourMode - 당신만의 스타일링 멘토",
     description: "창업대학 창업 활동",
     thumbnail: ImgYourMode,
@@ -86,19 +113,6 @@ const projects: Project[] = [
     githubLink: "https://github.com",
     demoLink: "https://smore.im/quiz/r5L8Ficmn6",
     lessons: "비동기 프로그래밍과 상태 관리의 중요성을 배웠습니다.",
-  },
-  {
-    id: 6,
-    title: "Portfolio",
-    description: "나만의 포트폴리오",
-    thumbnail: IcPlaceHolder,
-    technologies: ["React", "Emotion CSS", "TypeScript", "Nest.js", "PostgreSQL", "Vercel", "AWS"],
-    summary: "나만의 개인 포트폴리오 제작을 위한 개인 프로젝트입니다.",
-    features: ["AWS 배포", "포트폴리오 프로젝트 추가, 삭제, 수정 기능", "미디어 쿼리를 통한 반응형 UI", "Light/Dark 모드 적용"],
-    contribution: "프론트엔드 개발 100%, 백엔드 설계 및 API 개발 예정, AWS 배포 예정",
-    githubLink: "https://github.com/goorm-study-portfolio/minsu",
-    demoLink: "https://example.com",
-    lessons: "대용량 데이터 처리와 렌더링 최적화 기법을 습득했습니다.",
   },
 ];
 
