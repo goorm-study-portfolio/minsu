@@ -10,6 +10,7 @@ import ImgCohaus from "@img/img-cohaus.png";
 import ImgPureum from "@img/img-pureum.png";
 import ImgYourMode from "@img/img-yourmode.png";
 import ImgStock from "@img/img-stock.png";
+import ImgYourModeWeb from "@img/img-yourmode-web.png";
 
 type Project = {
   id: number
@@ -53,16 +54,16 @@ const projects: Project[] = [
   },
   {
     id: 3,
-    title: "Portfolio",
-    description: "나만의 포트폴리오",
-    thumbnail: IcPlaceHolder,
-    technologies: ["React", "Emotion CSS", "TypeScript", "Nest.js", "PostgreSQL", "Vercel", "AWS"],
-    summary: "나만의 개인 포트폴리오 제작을 위한 개인 프로젝트입니다.",
-    features: ["AWS 배포", "포트폴리오 프로젝트 추가, 삭제, 수정 기능", "미디어 쿼리를 통한 반응형 UI", "Light/Dark 모드 적용"],
-    contribution: "프론트엔드 개발 100%, 백엔드 설계 및 API 개발 예정, AWS 배포 예정",
-    githubLink: "https://github.com/goorm-study-portfolio/minsu",
-    demoLink: "https://example.com",
-    lessons: "대용량 데이터 처리와 렌더링 최적화 기법을 습득했습니다.",
+    title: "YourMode",
+    description: "체형 진단 및 개인 맞춤 패션 컨턴츠 서비스",
+    thumbnail: ImgYourModeWeb,
+    technologies: ["Next.js", "TypeScript", "Zustand", "Emotion", "TanstackQuery", "React-Hook-Form", "Vercel"],
+    summary: "체형 진단 및 개인 맞춤 패션 컨텐츠를 제공하는 서비스로, 사용자의 체형을 3가지 타입으로 분류하고, 해당 타입에 맞는 패션 컨텐츠를 제공합니다.\n이 과정에서 사용자는 자신의 체형에 맞는 패션 아이템과 스타일링 팁을 얻을 수 있습니다.\n또한, 사용자 맞춤형 패션 제품 추천 및 판매 기능을 통해 사용자가 직접 구매할 수 있는 경로를 제공합니다.",
+    features: ["체형 진단 및 타입 분류", "개인 맞춤 패션 컨텐츠 제공", "패션 제품 추천 및 판매"],
+    contribution: "아이디어 기획 및 검증, 프론트엔드 개발 참여 - 메인 Home 화면 및 스타일링 추천 기능\n프로젝트 FSD 아키텍처 설계 및 프로젝트 세팅, 공통 컴포넌트 추출",
+    githubLink: "https://github.com/Your-Mode/your-mode-web",
+    demoLink: "https://yourmode.vercel.app/",
+    lessons: "Next.js를 활용한 SSR(서버 사이드 렌더링)과 SSG(정적 사이트 생성)의 장점을 이해하고, 사용자 맞춤형 컨텐츠 제공을 위한 데이터 처리 및 상태 관리 방법을 익혔습니다.\n또한, Zustand를 사용하여 전역 상태 관리를 효율적으로 구현하는 방법을 배웠습니다.\n이 프로젝트를 통해 사용자 경험을 고려한 UI/UX 설계의 중요성을 다시 한번 느낄 수 있었습니다.",
   },
   {
     id: 4,
@@ -91,6 +92,19 @@ const projects: Project[] = [
   },
   {
     id: 6,
+    title: "Portfolio",
+    description: "나만의 포트폴리오",
+    thumbnail: IcPlaceHolder,
+    technologies: ["React", "Emotion CSS", "TypeScript", "Nest.js", "PostgreSQL", "Vercel", "AWS"],
+    summary: "나만의 개인 포트폴리오 제작을 위한 개인 프로젝트입니다.",
+    features: ["AWS 배포", "포트폴리오 프로젝트 추가, 삭제, 수정 기능", "미디어 쿼리를 통한 반응형 UI", "Light/Dark 모드 적용"],
+    contribution: "프론트엔드 개발 100%, 백엔드 설계 및 API 개발 예정, AWS 배포 예정",
+    githubLink: "https://github.com/goorm-study-portfolio/minsu",
+    demoLink: "https://example.com",
+    lessons: "대용량 데이터 처리와 렌더링 최적화 기법을 습득했습니다.",
+  },
+  {
+    id: 7,
     title: "푸름",
     description: "스마트폰 사용 습관 개선 서비스",
     thumbnail: ImgPureum,
@@ -102,7 +116,7 @@ const projects: Project[] = [
     lessons: "대학교 진학 후 1학년 처음으로 진행한 안드로이드 프로젝트입니다. 이 프로젝트를 통해 협업과 소통 방식의 중요성 그리고 개발 용어 및 기술에 대해 다양하게 배울 수 있었습니다. 특히, 안드로이드 개발에 필요한 필수적인 기술 스택 DataBinding, Hilt, Coroutine, ViewModel 등을 알 수 있었고, 공식 문서의 중요성을 느낄 수 있었습니다.",
   },
   {
-    id: 7,
+    id: 8,
     title: "YourMode - 당신만의 스타일링 멘토",
     description: "창업대학 창업 활동",
     thumbnail: ImgYourMode,
