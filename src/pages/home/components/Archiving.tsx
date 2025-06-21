@@ -11,14 +11,14 @@ const blogPosts = [
     link: "#",
   },
   {
-    title: "TypeScript와 함께하는 안전한 개발",
-    description: "TypeScript를 활용하여 더 안전하고 유지보수가 쉬운 코드를 작성하는 방법",
-    link: "#",
+    title: "React의 Batch 업데이트",
+    description: "React에서의 배치 작업에 대해 설명합니다.",
+    link: "https://velog.io/@tnalxmsk/React%EC%9D%98-Batch-2",
   },
   {
-    title: "상태 관리 라이브러리 비교",
-    description: "Redux, Zustand, Recoil 등 다양한 상태 관리 라이브러리의 장단점 분석",
-    link: "#",
+    title: "Hilt를 활용한 의존성 주입",
+    description: "Hilt를 사용하여 Android 애플리케이션에서 의존성 주입을 구현하는 방법.",
+    link: "https://velog.io/@tnalxmsk/Hilt",
   },
 ]
 
