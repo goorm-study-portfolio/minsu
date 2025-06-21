@@ -52,7 +52,7 @@ const Archiving = () => {
             <BlogList>
               {blogPosts.map((post, index) => (
                 <BlogCard key={index} inView={isInView} delay={index}>
-                  <BlogCardLink href={post.link}>
+                  <BlogCardLink href={post.link} target="_blank" rel="noopener noreferrer">
                     <BlogCardTitle>{post.title}</BlogCardTitle>
                     <BlogCardDescription>{post.description}</BlogCardDescription>
                   </BlogCardLink>
