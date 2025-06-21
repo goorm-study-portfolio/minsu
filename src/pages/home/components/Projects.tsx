@@ -3,7 +3,6 @@ import { keyframes } from "@emotion/react";
 import { useRef, useState } from "react";
 import { useInView } from "../feature/hooks/useInView";
 import { ExternalLink, Github, X } from "lucide-react";
-import IcPlaceHolder from "@icon/ic-placeholder.svg";
 import ImgMody from "@img//img-mody.png";
 import ImgBuddy from "@img/img-buddy.png";
 import ImgCohaus from "@img/img-cohaus.png";
@@ -11,6 +10,7 @@ import ImgPureum from "@img/img-pureum.png";
 import ImgYourMode from "@img/img-yourmode.png";
 import ImgStock from "@img/img-stock.png";
 import ImgYourModeWeb from "@img/img-yourmode-web.png";
+import ImgPortfolio from "@img/img-portfolio.png";
 
 type Project = {
   id: number
@@ -94,14 +94,14 @@ const projects: Project[] = [
     id: 6,
     title: "Portfolio",
     description: "나만의 포트폴리오",
-    thumbnail: IcPlaceHolder,
+    thumbnail: ImgPortfolio,
     technologies: ["React", "Emotion CSS", "TypeScript", "Nest.js", "PostgreSQL", "Vercel", "AWS"],
     summary: "나만의 개인 포트폴리오 제작을 위한 개인 프로젝트입니다.",
     features: ["AWS 배포", "포트폴리오 프로젝트 추가, 삭제, 수정 기능", "미디어 쿼리를 통한 반응형 UI", "Light/Dark 모드 적용"],
     contribution: "프론트엔드 개발 100%, 백엔드 설계 및 API 개발 예정, AWS 배포 예정",
     githubLink: "https://github.com/goorm-study-portfolio/minsu",
-    demoLink: "https://example.com",
-    lessons: "대용량 데이터 처리와 렌더링 최적화 기법을 습득했습니다.",
+    demoLink: "https://tnalxmsk.vercel.app/",
+    lessons: "개인 프로젝트를 통해 프론트엔드 개발에 대한 이해도를 높이고, React와 Emotion CSS를 활용한 스타일링 기법을 익혔습니다.\n또한, TypeScript를 사용하여 코드의 안정성과 가독성을 향상시켰습니다.\n백엔드 개발과 데이터베이스 설계는 아직 진행 중이지만, Nest.js와 PostgreSQL을 활용할 예정입니다.\n이 프로젝트를 통해 개인 포트폴리오의 중요성과 자신만의 브랜드를 구축하는 방법을 배웠습니다.",
   },
   {
     id: 7,
