@@ -60,7 +60,7 @@ const projects: Project[] = [
     technologies: ["Next.js", "TypeScript", "Zustand", "Emotion", "TanstackQuery", "React-Hook-Form", "Vercel", "OpenAI Assistant", "Pyton", "FastAPI"],
     summary: "체형 진단 및 개인 맞춤 패션 컨텐츠를 제공하는 서비스로, 사용자의 체형을 3가지 타입으로 분류하고, 해당 타입에 맞는 패션 컨텐츠를 제공합니다.\n이 과정에서 사용자는 자신의 체형에 맞는 패션 아이템과 스타일링 팁을 얻을 수 있습니다.\n또한, 사용자 맞춤형 패션 제품 추천 및 판매 기능을 통해 사용자가 직접 구매할 수 있는 경로를 제공합니다.",
     features: ["체형 진단 및 타입 분류", "개인 맞춤 패션 컨텐츠 제공", "패션 제품 추천 및 판매"],
-    contribution: "아이디어 기획 및 검증, 프론트엔드 개발 참여 - 메인 Home 화면 및 스타일링 추천 기능\n프로젝트 FSD 아키텍처 설계 및 프로젝트 세팅, 공통 컴포넌트 추출\nOpenAI Assistant를 활용한 체형 진단 및 패션 컨텐츠 생성",
+    contribution: "아이디어 기획 및 검증, 프론트엔드 개발 참여 - 메인 Home 화면 및 스타일링 추천 기능\n프로젝트 FSD 아키텍처 설계 및 프로젝트 세팅, 공통 컴포넌트 추출\nOpenAI Assistant를 활용한 체형 진단 및 패션 컨텐츠 생성\nAWS Lambda를 활용한 FastAPI 서버 배포",
     githubLink: "https://github.com/Your-Mode/your-mode-web",
     demoLink: "https://yourmode.vercel.app/",
     lessons: "Next.js를 활용한 SSR(서버 사이드 렌더링)과 SSG(정적 사이트 생성)의 장점을 이해하고, 사용자 맞춤형 컨텐츠 제공을 위한 데이터 처리 및 상태 관리 방법을 익혔습니다.\n또한, Zustand를 사용하여 전역 상태 관리를 효율적으로 구현하는 방법을 배웠습니다.\n이 프로젝트를 통해 사용자 경험을 고려한 UI/UX 설계의 중요성을 다시 한번 느낄 수 있었습니다.",
