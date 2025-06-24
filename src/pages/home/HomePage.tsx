@@ -4,6 +4,7 @@ import AboutMe from "@home/components/AboutMe.tsx";
 import Skills from "@home/components/Skills.tsx";
 import Archiving from "@home/components/Archiving.tsx";
 import Projects from "@home/components/Projects.tsx";
+import FloatingButton from "@home/components/FloatingButton.tsx";
 
 const HomePage = () => {
   return (
@@ -14,6 +15,7 @@ const HomePage = () => {
       <Skills />
       <Archiving />
       <Projects />
+      <FloatingButton />
     </>
   );
 };
