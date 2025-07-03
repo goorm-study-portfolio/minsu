@@ -6,20 +6,23 @@ import { useInView } from "@home/feature/hooks/useInView.ts";
 const skillCategories = [
   {
     title: "Language",
-    skills: ["TypeScript", "JavaScript", "Kotlin"],
+    skills: ["TypeScript", "JavaScript", "Kotlin", "Python"],
   },
   {
     title: "Front",
     skills: [
       "React",
+      "Next.js",
       "styled-components",
       "Emotion CSS",
+      "Tailwind CSS",
       "Zustand",
       "TanstackQuery",
       "Redux-toolkit",
       "React-Hook-Form",
       "Zod",
       "WebView",
+      "Vercel",
     ],
   },
   {
@@ -27,14 +30,30 @@ const skillCategories = [
     skills: ["DataBinding", "Flow", "Hilt", "Retrofit", "Coroutine", "DataStore", "ViewModel"],
   },
   {
-    title: "DevOps",
-    skills: ["AWS", "Vercel"],
+    title: "Collaborations",
+    skills: ["Git", "GitHub", "Notion", "Discord", "Slack"],
   },
-]
+  {
+    title: "Backend",
+    skills: ["NestJS", "FastAPI"],
+  },
+  {
+    title: "Database",
+    skills: ["PostgreSQL", "MySQL"],
+  },
+  {
+    title: "Server",
+    skills: ["AWS EC2", "AWS Lambda", "AWS API Gateway", "Docker"],
+  },
+  {
+    title: "Tools",
+    skills: ["WebStorm", "Visual Studio Code", "Android Studio", "IntelliJ", "PyCharm", "Figma", "Postman", "Zapier", "Google Analytics"],
+  },
+];
 
 const Skills = () => {
-  const sectionRef = useRef<HTMLElement>(null)
-  const isInView = useInView(sectionRef)
+  const sectionRef = useRef<HTMLElement>(null);
+  const isInView = useInView(sectionRef);
 
   return (
     <Section id="skills" ref={sectionRef}>
@@ -54,8 +73,8 @@ const Skills = () => {
         </SkillGrid>
       </Container>
     </Section>
-  )
-}
+  );
+};
 
 export default Skills;
 
@@ -68,18 +87,18 @@ const fadeIn = keyframes`
     opacity: 1;
     transform: translateY(0);
   }
-`
+`;
 
 const Section = styled.section`
   padding: 5rem 0 8rem;
   background-color: var(--background-color);
-`
+`;
 
 const Container = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
-`
+`;
 
 const SectionTitle = styled.h2<{ inView: boolean }>`
   font-size: 2rem;
@@ -90,24 +109,24 @@ const SectionTitle = styled.h2<{ inView: boolean }>`
   opacity: ${(props) => (props.inView ? 1 : 0)};
   transform: translateY(${(props) => (props.inView ? 0 : "20px")});
   transition: opacity 0.5s ease, transform 0.5s ease;
-  
+
   @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
     font-size: 2.5rem;
   }
-`
+`;
 
 const SkillGrid = styled.div`
   display: grid;
   gap: 1.5rem;
-  
+
   @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
     grid-template-columns: repeat(4, 1fr);
   }
-`
+`;
 
 const SkillCard = styled.div<{ inView: boolean; delay: number }>`
   background-color: var(--card-background);
@@ -116,11 +135,11 @@ const SkillCard = styled.div<{ inView: boolean; delay: number }>`
   height: 100%;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
   opacity: 0;
-  
+
   animation: ${fadeIn} 0.5s ease forwards;
   animation-delay: ${(props) => props.delay}ms;
   animation-play-state: ${(props) => (props.inView ? "running" : "paused")};
-`
+`;
 
 const SkillCardTitle = styled.h3`
   font-size: 1.25rem;
@@ -129,7 +148,7 @@ const SkillCardTitle = styled.h3`
   color: ${({ theme }) => theme.colors.primary};
   padding-bottom: 0.5rem;
   border-bottom: 1px solid var(--border-color);
-`
+`;
 
 const SkillList = styled.ul`
   list-style: none;
@@ -138,13 +157,13 @@ const SkillList = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-`
+`;
 
 const SkillItem = styled.li`
   display: flex;
   align-items: center;
   color: var(--text-color);
-  
+
   &:before {
     content: "";
     display: block;
@@ -154,4 +173,4 @@ const SkillItem = styled.li`
     background-color: ${({ theme }) => theme.colors.primary};
     margin-right: 0.5rem;
   }
-`
+`;
