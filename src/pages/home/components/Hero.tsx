@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import ImgProfileTwo from "@img/img-profile-two.png";
 import ImgProfileThree from "@img/img-profile-three.png";
 import ImgProfileFour from "@img/img-profile-four.png";
+import { Github, Instagram, Linkedin, Mail, MapPin, Phone } from "lucide-react";
 
 const FADE_DURATION = 300;
 const DISPLAY_DURATION = 400;
@@ -37,6 +38,17 @@ const Hero = () => {
     return () => clearTimeout(timerRef.current!);
   }, [currentIndex]);
 
+  const contactInfo = {
+    email: "alstnwkd990@naver.com",
+    phone: "+82 10-6645-7026",
+    location: "성남, 대한민국",
+    social: {
+      github: "https://github.com/Tnalxmsk",
+      linkedin: "https://www.linkedin.com/in/민수-장-956912355/",
+      instagram: "https://instagram.com/tnalxmsk",
+    },
+  };
+
 
   return (
     <HeroSection id="home">
@@ -59,6 +71,46 @@ const Hero = () => {
           />
         </ProfileImageWrapper>
         <IntroText visible={showIntro}>{INTRO_TEXT}</IntroText>
+        <ContactInfo visible={showIntro}>
+          <ContactLink href={`mailto:${contactInfo.email}`}>
+            <Mail size={16} />
+            {contactInfo.email}
+          </ContactLink>
+
+          <ContactLink href={`tel:${contactInfo.phone.replace(/\s/g, "")}`}>
+            <Phone size={16} />
+            {contactInfo.phone}
+          </ContactLink>
+
+          <ContactItem>
+            <MapPin size={16} />
+            {contactInfo.location}
+          </ContactItem>
+        </ContactInfo>
+
+        <SocialLinks visible={showIntro}>
+          <SocialLink href={contactInfo.social.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <Github size={20} />
+          </SocialLink>
+
+          <SocialLink
+            href={contactInfo.social.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+          >
+            <Linkedin size={20} />
+          </SocialLink>
+
+          <SocialLink
+            href={contactInfo.social.instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
+          >
+            <Instagram size={20} />
+          </SocialLink>
+        </SocialLinks>
       </Container>
 
       <Gradient />
@@ -137,10 +189,10 @@ const ProfileImageWrapper = styled.div`
   width: 16rem;
   height: 16rem;
   margin-bottom: 2rem;
-  /*border-radius: 50%;*/
+  border-radius: 50%;
   overflow: hidden;
-    /*border: 4px solid ${({ theme }) => theme.colors.primary};*/
-  /*box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);*/
+  border: 4px solid ${({ theme }) => theme.colors.primary};
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   animation: ${scaleIn} 0.8s ease-out forwards;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
@@ -174,4 +226,85 @@ const Gradient = styled.div`
   bottom: 0;
   background: linear-gradient(to bottom, transparent, var(--background-color));
   z-index: 0;
+`;
+
+const ContactInfo = styled.div<{ visible: boolean }>`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: ${slideUp} 0.8s ease-out forwards;
+  animation-delay: 1.6s;
+  animation-play-state: ${(props) => (props.visible ? "running" : "paused")};
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
+    flex-direction: row;
+    gap: 2rem;
+  }
+`;
+
+const ContactItem = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: ${({ theme }) => theme.colors.primary};
+  }
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
+    font-size: 1rem;
+  }
+`;
+
+const ContactLink = styled.a`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  text-decoration: none;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: ${({ theme }) => theme.colors.primary};
+  }
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
+    font-size: 1rem;
+  }
+`;
+
+const SocialLinks = styled.div<{ visible: boolean }>`
+  display: flex;
+  gap: 1rem;
+  opacity: 0;
+  animation: ${slideUp} 0.8s ease-out forwards;
+  animation-delay: 1.9s;
+  animation-play-state: ${(props) => (props.visible ? "running" : "paused")};
+`;
+
+const SocialLink = styled.a`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: var(--card-background);
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.primary};
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+  }
 `;
