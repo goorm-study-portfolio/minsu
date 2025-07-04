@@ -6,11 +6,16 @@ import { keyframes } from "@emotion/react";
 import { Calendar, MapPin, Award, Users, Trophy, ChevronDown, Building, Zap, Star } from "lucide-react";
 import { useInView } from "@home/feature/hooks/useInView.ts";
 
-type ExperienceType = "all" | "competition" | "club" | "contest" | "work" | "startup" | "Program";
+const ShowMoreIcon = styled(ChevronDown)<{ isExpanded: boolean }>`
+  transform: rotate(${(props) => (props.isExpanded ? "180deg" : "0deg")});
+  transition: transform 0.3s ease;
+`;
+
+type ExperienceType = "all" | "competition" | "club" | "contest" | "startup" | "Program"
 
 interface Experience {
   id: number;
-  type: Exclude<ExperienceType, "all">;
+  type: Exclude<ExperienceType, "all">[]; // 배열로 수정
   title: string;
   organization: string;
   period: string;
@@ -49,6 +54,8 @@ const getTypeLabel = (type: ExperienceType) => {
       return "공모전";
     case "startup":
       return "창업";
+    case "Program":
+      return "프로그램";
     default:
       return "전체";
   }
@@ -63,7 +70,7 @@ export default function Experience() {
   const experiences: Experience[] = [
     {
       id: 1,
-      type: "club",
+      type: ["club"],
       title: "UMC 3기 안드로이드 파트 활동",
       organization: "University MakeUs Challenge",
       period: "2022.09 - 2023.02",
@@ -74,7 +81,7 @@ export default function Experience() {
     },
     {
       id: 2,
-      type: "club",
+      type: ["club", "competition"],
       title: "UMC 3기 데모데이 대상 수상",
       organization: "University MakeUs Challenge",
       period: "2023.02",
@@ -85,7 +92,7 @@ export default function Experience() {
     },
     {
       id: 3,
-      type: "club",
+      type: ["club"],
       title: "가천대학교 GDSC 1기 Mobile 파트 활동",
       organization: "Google Developer Student Clubs",
       period: "2023.09 - 2024.07",
@@ -96,7 +103,7 @@ export default function Experience() {
     },
     {
       id: 4,
-      type: "club",
+      type: ["club"],
       title: "구름톤 유니브 2기 Android 파트 활동",
       organization: "Goormthon Univ",
       period: "2024.02 - 2024.08",
@@ -107,7 +114,7 @@ export default function Experience() {
     },
     {
       id: 5,
-      type: "competition",
+      type: ["competition"],
       title: "구름톤 유니브 2기 해커톤 벚꽃톤",
       organization: "Goormthon Univ",
       period: "2024.03.13 - 2024.03.24",
@@ -118,7 +125,7 @@ export default function Experience() {
     },
     {
       id: 6,
-      type: "startup",
+      type: ["startup"],
       title: "가천대학교 창업대학 GCS 4기",
       organization: "가천대학교 스타트업칼리지",
       period: "2024.03 - 2024.08",
@@ -129,7 +136,7 @@ export default function Experience() {
     },
     {
       id: 7,
-      type: "startup",
+      type: ["startup"],
       title: "가천대학교 창업대학 GCS 4기 학부제 과정",
       organization: "가천대학교 스타트업칼리지",
       period: "2024.08 - ing",
@@ -140,7 +147,7 @@ export default function Experience() {
     },
     {
       id: 8,
-      type: "contest",
+      type: ["contest", "startup"],
       title: "교내 공모전 창업 이룸 프로젝트",
       organization: "가천대학교 아르테크네센터",
       period: "2024.08 - 2025.01",
@@ -151,7 +158,7 @@ export default function Experience() {
     },
     {
       id: 9,
-      type: "contest",
+      type: ["contest", "startup"],
       title: "교내 공모전 꿈꾸는 기업메이커",
       organization: "가천대학교 아르테크네센터",
       period: "2024.09 - 2024.11",
@@ -162,7 +169,7 @@ export default function Experience() {
     },
     {
       id: 10,
-      type: "club",
+      type: ["club"],
       title: "구름톤 유니브 3기 학교 대표",
       organization: "Goormthon Univ",
       period: "2024.08 - 2025.01",
@@ -173,7 +180,7 @@ export default function Experience() {
     },
     {
       id: 11,
-      type: "competition",
+      type: ["competition"],
       title: "구름톤 유니브 3기 해커톤 단풍톤",
       organization: "Goormthon Univ",
       period: "2024.11.17 - 2024.11.24",
@@ -184,18 +191,7 @@ export default function Experience() {
     },
     {
       id: 12,
-      type: "club",
-      title: "UMC 7기 Web 파트 활동",
-      organization: "University MakeUs Challenge",
-      period: "2024.09 - 2025.02",
-      location: "대학교",
-      description: "개발 동아리에서 정기적인 React 스터디와 스터디장을 맡아 팀원을 이끌었습니다.",
-      achievement: "React 생태계 이해 및 라이브러리 활용 능력 향상",
-      tags: ["React", "TypeScript", "UMC", "Web 개발", "스터디장"],
-    },
-    {
-      id: 13,
-      type: "club",
+      type: ["club"],
       title: "UMC 7기 Web 파트 활동",
       organization: "University MakeUs Challenge",
       period: "2024.09 - 2025.02",
@@ -206,7 +202,7 @@ export default function Experience() {
     },
     {
       id: 14,
-      type: "contest",
+      type: ["contest"],
       title: "제 7회 전국 청년 아이디어톤 대회",
       organization: "수원특례시X아주대학교",
       period: "2024.11.09 - 2025.11.10",
@@ -217,35 +213,44 @@ export default function Experience() {
     },
     {
       id: 15,
-      type: "Program",
+      type: ["Program", "startup"],
       title: "경기청년 갭이어 프로그램",
       organization: "경기도미래세대재단, 한국생산성본부",
       period: "2025.06 - ing",
       location: "경기도",
       description: "경기 청년 갭이어 프로그램에 참여하여 교육 이후 최종 발표를 기다리고 있습니다.",
-      achievement: "최종 합격의 경우 1인당 500만원 지원,  총 2000만원 지원금 예정",
+      achievement: "최종 합격의 경우 1인당 500만원 지원, 총 2000만원 지원금 예정",
       tags: ["경기청년", "갭이어", "프로그램", "지원금", "창업"],
     },
     {
       id: 16,
-      type: "Program",
+      type: ["Program", "startup"],
       title: "하나 소셜벤처 유니버시티",
-      organization: "하나금융그룹",
+      organization: "하나금융그룹, 언더독스",
       period: "2025.07 - ing",
       location: "경기도",
-      description: "하나금융그룹의 소셜벤처 유니버시티 프로그램에 참여하여 사회적 가치 창출을 위한 창업 교육을 받고 있습니다.",
+      description:
+        "하나금융그룹의 소셜벤처 유니버시티 프로그램에 참여하여 사회적 가치 창출을 위한 창업 교육을 받고 있습니다.",
       achievement: "교육 수료 50만원 지원 및 우수팀 선정 시 300만원 지원",
       tags: ["하나금융그룹", "소셜벤처", "창업 교육", "사회적 가치", "지원금"],
     },
   ];
 
-  const filteredExperiences = experiences.filter((exp) => activeFilter === "all" || exp.type === activeFilter);
+  // 필터링 로직 수정
+  const filteredExperiences = experiences.filter(
+    (exp) => activeFilter === "all" || exp.type.includes(activeFilter as Exclude<ExperienceType, "all">),
+  );
 
-  const INITIAL_SHOW_COUNT = 6;
-  const shouldShowMore = filteredExperiences.length > INITIAL_SHOW_COUNT;
+  const INITIAL_SHOW_COUNT = 8;
   const displayedExperiences = isExpanded ? filteredExperiences : filteredExperiences.slice(0, INITIAL_SHOW_COUNT);
 
-  const filterTypes: ExperienceType[] = ["all", "competition", "club", "contest", "startup"];
+  const filterTypes: ExperienceType[] = ["all", "competition", "club", "contest", "startup", "Program"];
+
+  // 각 타입별 개수 계산 함수 수정
+  const getTypeCount = (type: ExperienceType) => {
+    if (type === "all") return experiences.length;
+    return experiences.filter((exp) => exp.type.includes(type as Exclude<ExperienceType, "all">)).length;
+  };
 
   return (
     <Section id="experience" ref={sectionRef}>
@@ -264,19 +269,23 @@ export default function Experience() {
             >
               {type !== "all" && getIcon(type as Exclude<ExperienceType, "all">)}
               {getTypeLabel(type)}
-              <span>
-                ({type === "all" ? experiences.length : experiences.filter((exp) => exp.type === type).length})
-              </span>
+              <span>({getTypeCount(type)})</span>
             </FilterButton>
           ))}
         </FilterContainer>
 
         <ExperienceContainer>
-          <ExperienceList maxHeight={800} isExpanded={isExpanded}>
+          <ExperienceList maxHeight={1200} isExpanded={isExpanded}>
             {displayedExperiences.map((experience, index) => (
               <ExperienceCard key={experience.id} inView={isInView} delay={index}>
                 <ExperienceHeader>
-                  <IconWrapper type={experience.type}>{getIcon(experience.type)}</IconWrapper>
+                  <IconContainer>
+                    {experience.type.map((type, typeIndex) => (
+                      <IconWrapper key={type} type={type} isPrimary={typeIndex === 0}>
+                        {getIcon(type)}
+                      </IconWrapper>
+                    ))}
+                  </IconContainer>
                   <ExperienceContent>
                     <ExperienceTitle>{experience.title}</ExperienceTitle>
                     <ExperienceOrganization>{experience.organization}</ExperienceOrganization>
@@ -295,6 +304,15 @@ export default function Experience() {
                   </ExperienceContent>
                 </ExperienceHeader>
 
+                <CategoryTags>
+                  {experience.type.map((type) => (
+                    <CategoryTag key={type} type={type}>
+                      {getIcon(type)}
+                      {getTypeLabel(type)}
+                    </CategoryTag>
+                  ))}
+                </CategoryTags>
+
                 <ExperienceDescription>{experience.description}</ExperienceDescription>
 
                 <AchievementBadge>
@@ -311,7 +329,7 @@ export default function Experience() {
             ))}
           </ExperienceList>
 
-          {shouldShowMore && (
+          {filteredExperiences.length > INITIAL_SHOW_COUNT && (
             <ShowMoreButton inView={isInView} onClick={() => setIsExpanded(!isExpanded)}>
               {isExpanded ? "접기" : `${filteredExperiences.length - INITIAL_SHOW_COUNT}개 더 보기`}
               <ShowMoreIcon isExpanded={isExpanded} />
@@ -391,7 +409,7 @@ const FilterButton = styled.button<{ active: boolean }>`
   border-radius: 9999px;
   border: 1px solid var(--border-color);
   background-color: ${({ active, theme }) => (active ? theme.colors.primary : "var(--card-background)")};
-  color: ${(props) => (props.active ? "white" : "var(--text-color)")};
+  color: ${({ active }) => (active ? "white" : "var(--text-color)")};
   font-size: 0.875rem;
   font-weight: 500;
   cursor: pointer;
@@ -446,12 +464,19 @@ const ExperienceHeader = styled.div`
   margin-bottom: 1rem;
 `;
 
-const IconWrapper = styled.div<{ type: string }>`
+const IconContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex-shrink: 0;
+`;
+
+const IconWrapper = styled.div<{ type: string; isPrimary?: boolean }>`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: ${(props) => (props.isPrimary ? "2.5rem" : "1.75rem")};
+  height: ${(props) => (props.isPrimary ? "2.5rem" : "1.75rem")};
   border-radius: 50%;
   background-color: ${({ type, theme }) => {
     switch (type) {
@@ -461,8 +486,10 @@ const IconWrapper = styled.div<{ type: string }>`
         return "#10b98120";
       case "contest":
         return "#f59e0b20";
-      case "work":
+      case "startup":
         return "#8b5cf620";
+      case "Program":
+        return "#06b6d420";
       default:
         return `${theme.colors.primary}20`;
     }
@@ -475,12 +502,15 @@ const IconWrapper = styled.div<{ type: string }>`
         return "#10b981";
       case "contest":
         return "#f59e0b";
-      case "work":
+      case "startup":
         return "#8b5cf6";
+      case "Program":
+        return "#06b6d4";
       default:
         return theme.colors.primary;
     }
   }};
+  opacity: ${(props) => (props.isPrimary ? 1 : 0.7)};
   flex-shrink: 0;
 `;
 
@@ -528,6 +558,55 @@ const ExperienceDescription = styled.p`
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+`;
+
+const CategoryTags = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+  margin-bottom: 0.75rem;
+`;
+
+const CategoryTag = styled.span<{ type: string }>`
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.625rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  background-color: ${({ type, theme }) => {
+    switch (type) {
+      case "competition":
+        return `${theme.colors.primary}15`;
+      case "club":
+        return "#10b98115";
+      case "contest":
+        return "#f59e0b15";
+      case "startup":
+        return "#8b5cf615";
+      case "Program":
+        return "#06b6d415";
+      default:
+        return `${theme.colors.primary}15`;
+    }
+  }};
+  color: ${({ type, theme }) => {
+    switch (type) {
+      case "competition":
+        return theme.colors.primary;
+      case "club":
+        return "#10b981";
+      case "contest":
+        return "#f59e0b";
+      case "startup":
+        return "#8b5cf6";
+      case "Program":
+        return "#06b6d4";
+      default:
+        return theme.colors.primary;
+    }
+  }};
+  font-weight: 500;
 `;
 
 const AchievementBadge = styled.div`
@@ -580,12 +659,7 @@ const ShowMoreButton = styled.button<{ inView: boolean }>`
 
   &:hover {
     border-color: ${({ theme }) => theme.colors.primary};
-    color: ${({ theme }) => theme.colors.primary}
+    color: ${({ theme }) => theme.colors.primary};
     background-color: ${({ theme }) => theme.colors.primary}05;
   }
-`;
-
-const ShowMoreIcon = styled(ChevronDown)<{ isExpanded: boolean }>`
-  transform: rotate(${(props) => (props.isExpanded ? "180deg" : "0deg")});
-  transition: transform 0.3s ease;
 `;
