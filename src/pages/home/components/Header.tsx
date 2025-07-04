@@ -25,7 +25,7 @@ const Header = () => {
 
       setLastScrollY(currentScrollY);
 
-      const sections = ["home", "about", "skills", "archiving", "projects"];
+      const sections = ["home", "about", "skills", "experience", "archiving", "projects"];
       const scrollPosition = window.scrollY + 200; // 헤더 높이 + 여유분
 
       let currentSection = "home";
@@ -68,7 +68,7 @@ const Header = () => {
   const navItems = [
     { id: "about", label: "About Me" },
     { id: "skills", label: "Skills" },
-    { id: "Experience", label: "Experience" },
+    { id: "experience", label: "Experience" },
     { id: "archiving", label: "Archiving" },
     { id: "projects", label: "Projects" },
   ];
