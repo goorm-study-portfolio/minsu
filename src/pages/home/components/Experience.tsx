@@ -427,13 +427,13 @@ const ExperienceContainer = styled.div`
 const ExperienceList = styled.div<{ maxHeight: number; isExpanded: boolean }>`
   display: grid;
   gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  max-height: ${(props) => (props.isExpanded ? "none" : `${props.maxHeight}px`)};
-  overflow: hidden;
-  transition: max-height 0.5s ease;
+  grid-template-columns: repeat(1, 1fr);
 
-  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  @media (min-width: 640px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
   }
 `;
 
