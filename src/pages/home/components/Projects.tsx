@@ -95,7 +95,7 @@ const projects: Project[] = [
     title: "Portfolio",
     description: "나만의 포트폴리오",
     thumbnail: ImgPortfolio,
-    technologies: ["React", "Emotion CSS", "TypeScript", "Nest.js", "PostgreSQL", "Vercel", "AWS"],
+    technologies: ["React", "Emotion CSS", "TypeScript", "Vercel"],
     summary: "나만의 개인 포트폴리오 제작을 위한 개인 프로젝트입니다.",
     features: ["AWS 배포", "포트폴리오 프로젝트 추가, 삭제, 수정 기능", "미디어 쿼리를 통한 반응형 UI", "Light/Dark 모드 적용"],
     contribution: "프론트엔드 개발 100%, 백엔드 설계 및 API 개발 예정, AWS 배포 예정",
