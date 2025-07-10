@@ -33,21 +33,21 @@ const skillCategories = [
     title: "Collaborations",
     skills: ["Git", "GitHub", "Notion", "Discord", "Slack"],
   },
-  {
+  /*{
     title: "Backend",
     skills: ["NestJS", "FastAPI"],
   },
   {
     title: "Database",
     skills: ["PostgreSQL", "MySQL"],
-  },
+  },*/
   {
-    title: "Server",
-    skills: ["AWS EC2", "AWS Lambda", "AWS API Gateway", "Docker"],
+    title: "Backend",
+    skills: ["FastAPI", "AWS EC2", "AWS Lambda", "AWS API Gateway", "Docker"],
   },
   {
     title: "Tools",
-    skills: ["WebStorm", "Visual Studio Code", "Android Studio", "IntelliJ", "PyCharm", "Figma", "Postman", "Zapier", "Google Analytics"],
+    skills: ["Figma", "Postman", "Zapier", "Google Analytics"],
   },
 ];
 
@@ -124,7 +124,7 @@ const SkillGrid = styled.div`
   }
 
   @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 `;
 

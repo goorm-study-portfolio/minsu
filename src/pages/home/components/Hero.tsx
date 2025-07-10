@@ -6,7 +6,7 @@ import { Github, Instagram, Linkedin, Mail, MapPin, Phone } from "lucide-react";
 
 const FADE_DURATION = 300;
 const DISPLAY_DURATION = 400;
-const INTRO_TEXT = "가설 검증과 빠른 실행을 바탕으로\n사용자 가치를 최우선으로 생각합니다";
+const INTRO_TEXT = "검증과 실행을 바탕으로\n사용자 가치를 최우선으로 생각합니다";
 
 const Hero = () => {
   const [showIntro, setShowIntro] = useState(false);

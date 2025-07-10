@@ -8,7 +8,6 @@ import ImgBuddy from "@img/img-buddy.png";
 import ImgCohaus from "@img/img-cohaus.png";
 import ImgPureum from "@img/img-pureum.png";
 import ImgYourMode from "@img/img-yourmode.png";
-import ImgStock from "@img/img-stock.png";
 import ImgYourModeWeb from "@img/img-yourmode-web.png";
 import ImgPortfolio from "@img/img-portfolio.png";
 
@@ -33,25 +32,24 @@ const projects: Project[] = [
     description: "AI 기반 패션 추천 서비스",
     thumbnail: ImgMody,
     technologies: ["React", "TypeScript", "Zustand", "ReactNative", "Styled-Components", "TanstackQuery", "WebView", "React-Hook-Form", "Zod", "Vercel"],
-    summary: "OpenAI API룰 활용한 패션 추천 서비스로, 개인 맞춤형 스타일링을 제공합니다.\n사용자의 체형 타입을 3가지로 분류한 후 체형 타입과 선호 스타일 기반으로 맞춤 스타일링을 제공합니다.\n이 과정에서 gpt-4o 모델을 사용해 텍스트를 생성하고\n크롤링 서버를 통해 이미지를 수집한 후 사용자에게 제공합니다.\n커뮤니티는 사용자의 입장을 고려하여, 나와 같은 체형 타입을 가진 사람들의 게시글을\n우선적으로 보여지도록 기획하였습니다.\n데모데이에서 약 100명의 유저 테스트를 진행하였고, 해당 서비스에 대해 만족스럽다는 평가를 받았습니다.",
-    features: ["AI 기반 맞춤형 스타일링 추천", "WebView 활용한 모바일 App", "체형 타입 기반 커뮤니티", "커뮤니티, 스타일링 컨텐츠 무한 스크롤"],
+    summary: "OpenAI API룰 활용한 패션 추천 서비스로, 개인 맞춤형 스타일링을 제공합니다.\n사용자의 체형 타입을 3가지로 분류한 후 체형 타입과 선호 스타일 기반으로 맞춤 스타일링을 제공합니다.\n데모데이에서 약 100명의 유저 테스트를 진행하였고, 해당 서비스에 대해 만족스럽다는 평가를 받았습니다.",
+    features: ["AI 기반 맞춤형 스타일링 추천", "WebView 활용한 모바일 App", "체형 타입 기반 커뮤니티"],
     contribution: "아이디어 기획 100%, 프롬프트 설계\n프론트엔드 개발 참여 - 메인 Home 화면 및 스타일링 추천 기능\n프로젝트 FSD 아키텍처 설계 및 프로젝트 세팅, 공통 컴포넌트 추출",
     githubLink: "https://github.com/TeamMody/mody-front",
-    demoLink: "https://front.kkoalla.app/",
-    lessons: "해결하고 싶은 문제 설정과 사용자 중심의 서비스를 기획하고 개발하는 것의 중요성을 배웠습니다.\n실제 서비스 배포 후 사용자 테스트를 통해 체형 타입 진단과 이미지를 함께 제공하는 스타일링 추천이 만족스럽다는 평가를 가장 많이 받았습니다. 또한, 한 마케팅 회사 대표분께서 체형 타입 기반 커뮤니티 기능으로 나와 같은 체형 타입을 가진 사람들과 소통할 수 있다는 점을 좋게 평가해주셨습니다.\n\n이번 프로젝트를 통해 팀 협업을 위한 아키텍처 및 공통 컴포넌트, 컨벤션 설계와 실제 유저 테스트 및 피드백을 통해 개선해 나가는 과정을 경험할 수 있었습니다.",
+    lessons: "프리토타입 테스트의 긍정적인 결과를 바탕으로 사용자에게 가치를 제공할 수 있는 서비스를 구현하고 배포하였습니다. 가설 검증과 실행을 통해 사용자가 필요한 기능이 무엇인지 어떤 경험을 원하고 있는지, 어떤 문제를 해결할 수 있는지에 대한 명확한 이해를 얻을 수 있었습니다.",
   },
   {
     id: 2,
     title: "YourMode",
-    description: "체형 진단 및 개인 맞춤 패션 컨턴츠 서비스",
+    description: "골격 진단 및 개인 맞춤 패션 컨턴츠 서비스",
     thumbnail: ImgYourModeWeb,
     technologies: ["Next.js", "TypeScript", "Zustand", "Emotion", "TanstackQuery", "React-Hook-Form", "Vercel", "OpenAI Assistant", "Python", "FastAPI", "AWS Lambda"],
-    summary: "체형 진단 및 개인 맞춤 패션 컨텐츠를 제공하는 서비스로, 사용자의 체형을 3가지 타입으로 분류하고, 해당 타입에 맞는 패션 컨텐츠를 제공합니다.\n이 과정에서 사용자는 자신의 체형에 맞는 패션 아이템과 스타일링 팁을 얻을 수 있습니다.\n또한, 사용자 맞춤형 패션 제품 추천 및 판매 기능을 통해 사용자가 직접 구매할 수 있는 경로를 제공합니다.",
+    summary: "2차에 걸쳐 약 1100명이 참여한 MVP 테스트를 바탕으로 준비한 프로젝트로, 골격 진단 및 개인 맞춤 패션 컨텐츠를 제공하는 서비스입니다. 사용자의 체형을 3가지 타입으로 분류하고, 해당 타입에 맞는 패션 컨텐츠를 제공합니다.\n이 과정에서 사용자는 자신의 체형에 맞는 패션 아이템과 스타일링 팁을 얻을 수 있으며, 상품 판매로 연결됩니다.\n이 프로젝트는 교내 창업대학 과정에서 진행하고 있는 활동으로, API 연결과 실제 서비스 배포를 준비하고 있습니다.",
     features: ["체형 진단 및 타입 분류", "개인 맞춤 패션 컨텐츠 제공", "패션 제품 추천 및 판매"],
     contribution: "아이디어 기획 및 검증, 프론트엔드 개발 참여 - 메인 Home 화면 및 스타일링 추천 기능\n프로젝트 FSD 아키텍처 설계 및 프로젝트 세팅, 공통 컴포넌트 추출\nOpenAI Assistant를 활용한 체형 진단 및 패션 컨텐츠 생성\nAWS Lambda를 활용한 FastAPI 서버 배포",
     githubLink: "https://github.com/Your-Mode/your-mode-web",
     demoLink: "https://yourmode.vercel.app/",
-    lessons: "Next.js를 활용한 SSR(서버 사이드 렌더링)과 SSG(정적 사이트 생성)의 장점을 이해하고, 사용자 맞춤형 컨텐츠 제공을 위한 데이터 처리 및 상태 관리 방법을 익혔습니다.\n또한, Zustand를 사용하여 전역 상태 관리를 효율적으로 구현하는 방법을 배웠습니다.\n이 프로젝트를 통해 사용자 경험을 고려한 UI/UX 설계의 중요성을 다시 한번 느낄 수 있었습니다.",
+    lessons: "MVP 테스트를 통해 사용자 피드백을 받고, 이를 바탕으로 서비스 개선 방향을 설정할 수 있었습니다.\n또한, OpenAI API와 FastAPI를 활용하여 AI 기반의 체형 진단 및 패션 컨텐츠 생성 기능을 구현하였습니다.\n사용자에게 만족스러운 경험을 제공하기 위해 단순한 기능 제공이 아닌 사용자에게 실질적인 가치를 제공하기 위한 고민과 노력의 소중함을 배울 수 있었습니다.",
   },
   {
     id: 3,
@@ -65,7 +63,7 @@ const projects: Project[] = [
     githubLink: "https://github.com",
     lessons: "React와 TypeScript를 활용한 첫 프론트엔드 팀 프로젝트로, Zustand를 사용하며 Context, Redux 보다 쉽고 간편한 상태 관리 코드를 작성할 수 있었습니다.\n또한 TanstackQuery를 사용해 API 요청과 캐싱을 효율적으로 사용하는 방법을 익힐 수 있었습니다.\n마지막으로 React-Hook-Form을 사용하여 반복적이고 긴 코드를 효율적이고 간결하게 작성할 수 있었습니다.\n결론적으로 세 라이브러리를 통해 프론트엔드 개발 생산성을 높일 수 있었습니다.",
   },
-  {
+  /*{
     id: 4,
     title: "Stock Simulator",
     description: "주린이를 위한 주식 시뮬레이션",
@@ -77,7 +75,7 @@ const projects: Project[] = [
     githubLink: "https://github.com/Tnalxmsk/stock-simulator",
     demoLink: "https://stock-simulator-two.vercel.app/",
     lessons: "대용량 데이터 처리와 렌더링 최적화 기법을 습득했습니다.",
-  },
+  },*/
   {
     id: 5,
     title: "Cohaus",
@@ -97,11 +95,11 @@ const projects: Project[] = [
     thumbnail: ImgPortfolio,
     technologies: ["React", "Emotion CSS", "TypeScript", "Vercel"],
     summary: "나만의 개인 포트폴리오 제작을 위한 개인 프로젝트입니다.",
-    features: ["AWS 배포", "포트폴리오 프로젝트 추가, 삭제, 수정 기능", "미디어 쿼리를 통한 반응형 UI", "Light/Dark 모드 적용"],
+    features: ["미디어 쿼리를 통한 반응형 UI", "Light/Dark 모드 적용"],
     contribution: "프론트엔드 개발 100%, 백엔드 설계 및 API 개발 예정, AWS 배포 예정",
     githubLink: "https://github.com/goorm-study-portfolio/minsu",
     demoLink: "https://tnalxmsk.vercel.app/",
-    lessons: "개인 프로젝트를 통해 프론트엔드 개발에 대한 이해도를 높이고, React와 Emotion CSS를 활용한 스타일링 기법을 익혔습니다.\n또한, TypeScript를 사용하여 코드의 안정성과 가독성을 향상시켰습니다.\n백엔드 개발과 데이터베이스 설계는 아직 진행 중이지만, Nest.js와 PostgreSQL을 활용할 예정입니다.\n이 프로젝트를 통해 개인 포트폴리오의 중요성과 자신만의 브랜드를 구축하는 방법을 배웠습니다.",
+    lessons: "나를 표현할 수 있는 포트폴리오가 무엇인지 고민하고, 지속적으로 개선해 나가고 있는 포트폴리오입니다.",
   },
   {
     id: 7,
