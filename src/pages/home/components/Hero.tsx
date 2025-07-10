@@ -1,19 +1,14 @@
 import styled from "@emotion/styled";
 import { keyframes } from "@emotion/react";
 import { useEffect, useRef, useState } from "react";
-import ImgProfileTwo from "@img/img-profile-two.png";
-import ImgProfileThree from "@img/img-profile-three.png";
 import ImgProfileFour from "@img/img-profile-four.png";
 import { Github, Instagram, Linkedin, Mail, MapPin, Phone } from "lucide-react";
 
 const FADE_DURATION = 300;
 const DISPLAY_DURATION = 400;
-const profileImages = [ImgProfileTwo, ImgProfileThree, ImgProfileFour];
-const INTRO_TEXT = "성장의 물살을 거스르는\n연어와 같은 개발자 장민수입니다";
+const INTRO_TEXT = "가설 검증과 빠른 실행을 바탕으로\n사용자 가치를 최우선으로 생각합니다";
 
 const Hero = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [prevIndex, setPrevIndex] = useState<number | null>(null);
   const [showIntro, setShowIntro] = useState(false);
   const [fadeIn, setFadeIn] = useState(true);
 
@@ -21,22 +16,16 @@ const Hero = () => {
 
   useEffect(() => {
     setFadeIn(true);
-    if (currentIndex === profileImages.length - 1) {
-      timerRef.current = setTimeout(() => setShowIntro(true), 500);
-      return;
-    }
-
     timerRef.current = setTimeout(() => {
       setFadeIn(false); // fade out
       setTimeout(() => {
-        setPrevIndex(currentIndex);
-        setCurrentIndex((idx) => idx + 1);
         setFadeIn(true); // 다음 이미지 fade in
+        setShowIntro(true); // show intro text
       }, FADE_DURATION);
     }, FADE_DURATION + DISPLAY_DURATION);
 
     return () => clearTimeout(timerRef.current!);
-  }, [currentIndex]);
+  }, []);
 
   const contactInfo = {
     email: "alstnwkd990@naver.com",
@@ -54,20 +43,10 @@ const Hero = () => {
     <HeroSection id="home">
       <Container>
         <ProfileImageWrapper>
-          {/* 이전 이미지 (fade out, 겹침) */}
-          {prevIndex !== null && prevIndex !== currentIndex && (
-            <FadeImg
-              src={profileImages[prevIndex]}
-              style={{ zIndex: 1 }}
-              fadeType="out"
-            />
-          )}
-          {/* 현재 이미지 */}
           <FadeImg
-            src={profileImages[currentIndex]}
+            src={ImgProfileFour}
             style={{ zIndex: 2 }}
             fadeType={fadeIn ? "in" : "out"}
-            isFinal={currentIndex === profileImages.length - 1}
           />
         </ProfileImageWrapper>
         <IntroText visible={showIntro}>{INTRO_TEXT}</IntroText>
@@ -130,13 +109,6 @@ const FadeImg = styled.img<{
   object-fit: cover;
   top: 0;
   left: 0;
-  transition: opacity ${FADE_DURATION}ms cubic-bezier(0.4, 0, 0.2, 1);
-  opacity: ${({ fadeType, isFinal }) =>
-    isFinal
-      ? 1
-      : fadeType === "in"
-        ? 1
-        : 0};
   pointer-events: none;
 `;
 

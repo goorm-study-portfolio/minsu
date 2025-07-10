@@ -218,7 +218,7 @@ export default function Experience() {
       organization: "경기도미래세대재단, 한국생산성본부",
       period: "2025.06 - ing",
       location: "경기도",
-      description: "경기 청년 갭이어 프로그램에 참여하여 교육 이후 최종 발표를 기다리고 있습니다.",
+      description: "경기 청년 갭이어 프로그램에 최종 합격하여 창업 아이템 개발 및 솔루션 테스트를 준비하고 있습니다.",
       achievement: "최종 합격의 경우 1인당 500만원 지원, 총 2000만원 지원금 예정",
       tags: ["경기청년", "갭이어", "프로그램", "지원금", "창업"],
     },

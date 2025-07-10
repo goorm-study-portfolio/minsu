@@ -1,10 +1,10 @@
 import { keyframes } from "@emotion/react";
 import { useRef } from "react";
 import { useInView } from "@home/feature/hooks/useInView.ts";
-import { Github } from "lucide-react";
+import { Github, Star } from "lucide-react";
 import styled from "@emotion/styled";
 
-const blogPosts = [
+/*const blogPosts = [
   {
     title: "React 성능 최적화 방법",
     description: "React 애플리케이션의 성능을 향상시키는 다양한 방법에 대해 알아봅니다.",
@@ -20,7 +20,7 @@ const blogPosts = [
     description: "Hilt를 사용하여 Android 애플리케이션에서 의존성 주입을 구현하는 방법.",
     link: "https://velog.io/@tnalxmsk/Hilt",
   },
-]
+]*/
 
 const Archiving = () => {
   const sectionRef = useRef<HTMLElement>(null)
@@ -46,8 +46,22 @@ const Archiving = () => {
               </GithubCardContent>
             </GithubCardLink>
           </GithubCard>
+          <GithubCard inView={isInView}>
+            <GithubCardLink href="https://velog.io/@tnalxmsk/posts" target="_blank" rel="noopener noreferrer">
+              <GithubCardHeader>
+                <Star size={32} />
+                <div>
+                  <GithubCardTitle>Velog</GithubCardTitle>
+                  <GithubCardDescription>velog.io/@tnalxmsk/posts</GithubCardDescription>
+                </div>
+              </GithubCardHeader>
+              <GithubCardContent>
+                <p>개발 관련 내용을 정리한 블로그입니다. Android, JavaScript, React 와 관련한 글을 작성하였습니다.</p>
+              </GithubCardContent>
+            </GithubCardLink>
+          </GithubCard>
 
-          <BlogSection inView={isInView}>
+          {/*<BlogSection inView={isInView}>
             <BlogTitle>블로그 포스트</BlogTitle>
             <BlogList>
               {blogPosts.map((post, index) => (
@@ -59,7 +73,7 @@ const Archiving = () => {
                 </BlogCard>
               ))}
             </BlogList>
-          </BlogSection>
+          </BlogSection>*/}
         </ArchiveGrid>
       </Container>
     </Section>
@@ -68,7 +82,7 @@ const Archiving = () => {
 
 export default Archiving;
 
-const fadeIn = keyframes`
+/*const fadeIn = keyframes`
   from {
     opacity: 0;
     transform: translateY(20px);
@@ -77,7 +91,7 @@ const fadeIn = keyframes`
     opacity: 1;
     transform: translateY(0);
   }
-`
+`*/
 
 const slideInLeft = keyframes`
   from {
@@ -177,7 +191,7 @@ const GithubCardContent = styled.div`
   }
 `
 
-const BlogSection = styled.div<{ inView: boolean }>`
+/*const BlogSection = styled.div<{ inView: boolean }>`
   animation: ${fadeIn} 0.6s ease-out forwards;
   animation-delay: 0.3s;
   animation-play-state: ${(props) => (props.inView ? "running" : "paused")};
@@ -194,24 +208,24 @@ const BlogList = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-`
+`*/
 
-const BlogCard = styled.div<{ inView: boolean; delay: number }>`
+/*const BlogCard = styled.div<{ inView: boolean; delay: number }>`
   background-color: var(--card-background);
   border-radius: 0.5rem;
   padding: 1.5rem;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  
+
   animation: ${fadeIn} 0.5s ease-out forwards;
   animation-delay: ${(props) => 0.5 + props.delay * 0.2}s;
   animation-play-state: ${(props) => (props.inView ? "running" : "paused")};
-  
+
   &:hover {
     transform: translateY(-3px);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   }
-`
-
+`*/
+/*
 const BlogCardLink = styled.a`
   display: block;
   text-decoration: none;
@@ -229,4 +243,4 @@ const BlogCardDescription = styled.p`
   color: var(--text-muted);
   font-size: 0.875rem;
   margin: 0;
-`
+`*/
