@@ -48,7 +48,7 @@ const projects: Project[] = [
     features: ["체형 진단 및 타입 분류", "개인 맞춤 패션 컨텐츠 제공", "패션 제품 추천 및 판매"],
     contribution: "아이디어 기획 및 검증, 프론트엔드 개발 참여 - 메인 Home 화면 및 스타일링 추천 기능\n프로젝트 FSD 아키텍처 설계 및 프로젝트 세팅, 공통 컴포넌트 추출\nOpenAI Assistant를 활용한 체형 진단 및 패션 컨텐츠 생성\nAWS Lambda를 활용한 FastAPI 서버 배포",
     githubLink: "https://github.com/Your-Mode/your-mode-web",
-    demoLink: "https://yourmode.vercel.app/",
+    demoLink: "https://www.yourmode.co.kr/",
     lessons: "MVP 테스트를 통해 사용자 피드백을 받고, 이를 바탕으로 서비스 개선 방향을 설정할 수 있었습니다.\n또한, OpenAI API와 FastAPI를 활용하여 AI 기반의 체형 진단 및 패션 컨텐츠 생성 기능을 구현하였습니다.\n사용자에게 만족스러운 경험을 제공하기 위해 단순한 기능 제공이 아닌 사용자에게 실질적인 가치를 제공하기 위한 고민과 노력의 소중함을 배울 수 있었습니다.",
   },
   {
