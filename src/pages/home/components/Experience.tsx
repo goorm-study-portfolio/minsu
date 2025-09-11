@@ -227,12 +227,24 @@ export default function Experience() {
       type: ["Program", "startup"],
       title: "하나 소셜벤처 유니버시티",
       organization: "하나금융그룹, 언더독스",
-      period: "2025.07 - ing",
+      period: "2025.07 - 2025.07",
       location: "경기도",
       description:
         "하나금융그룹의 소셜벤처 유니버시티 프로그램에 참여하여 사회적 가치 창출을 위한 창업 교육을 받고 있습니다.",
       achievement: "교육 수료 50만원 지원 및 우수팀 선정 시 300만원 지원",
       tags: ["하나금융그룹", "소셜벤처", "창업 교육", "사회적 가치", "지원금"],
+    },
+    {
+      id: 16,
+      type: ["Program", "startup"],
+      title: "Tech for Impact",
+      organization: "카카오 임팩트",
+      period: "2025.09 - ing",
+      location: "서울대, 카이스트, 가천대",
+      description:
+        "카카오 임팩트 재단에서 실시하는 Tech for Impact에 참여하여 사회적 가치 창출을 위한 교육을 받고 있습니다.",
+      achievement: "교육 수료 50만원 지원 및 우수팀 선정 시 300만원 지원",
+      tags: ["카카오 임팩트", "임팩트", "창업 교육", "사회적 가치"],
     },
   ];
 
