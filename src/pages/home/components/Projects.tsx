@@ -10,6 +10,7 @@ import ImgPureum from "@img/img-pureum.png";
 import ImgYourMode from "@img/img-yourmode.png";
 import ImgYourModeWeb from "@img/img-yourmode-web.png";
 import ImgPortfolio from "@img/img-portfolio.png";
+import ImgDasion from "@img/img-dasion.png";
 
 type Project = {
   id: number
@@ -62,6 +63,19 @@ const projects: Project[] = [
     contribution: "아이디어 기획 20% 참여 - 영역별 미션 기능 기획\n프론트엔드 개발 50% 참여 - 미션, 지원제도, 챗봇 UI 개발 및 기능 구현",
     githubLink: "https://github.com",
     lessons: "React와 TypeScript를 활용한 첫 프론트엔드 팀 프로젝트로, Zustand를 사용하며 Context, Redux 보다 쉽고 간편한 상태 관리 코드를 작성할 수 있었습니다.\n또한 TanstackQuery를 사용해 API 요청과 캐싱을 효율적으로 사용하는 방법을 익힐 수 있었습니다.\n마지막으로 React-Hook-Form을 사용하여 반복적이고 긴 코드를 효율적이고 간결하게 작성할 수 있었습니다.\n결론적으로 세 라이브러리를 통해 프론트엔드 개발 생산성을 높일 수 있었습니다.",
+  },
+  {
+    id: 4,
+    title: "다시온 - 오늘도 찾아온 단골손님",
+    description: "2025 Kakao X Goorm 시즌톤 사장님만을 위한 단골 관리 솔루션 서비스",
+    thumbnail: ImgDasion,
+    technologies: ["React", "TypeScript", "Emotion CSS", "Zustand", "TanstackQuery", "React-Hook-Form", "Zod", "Vercel", "Kakao Login API", "Lottie", "Rechart"],
+    summary: "소상공인 사장님들을 위한 단골 관리 솔루션 서비스로, 단골 관리를 위한 방문 통계, 방문자 정보 차트, 공지, 쿠폰 관리 등의 기능을 제공합니다.",
+    features: ["방문자 하루 통계", "일간, 주간 방문자 정보", "공지 작성 및 열람 정보", "쿠폰 발급", "사장님 전용 서비스 QnA 챗봇"],
+    contribution: "챗봇을 제외한 프론트엔드 개발 100%",
+    githubLink: "https://github.com/9oormthon-univ/2025_SEASONTHON_TEAM_44_FE_WEB",
+    demoLink: "https://ceo-dasion.vercel.app/",
+    lessons: "Rechart를 활용하여 데이터 시각화 차트를 구현하고, Lottie를 활용하여 애니메이션 효과를 적용하는 방법을 익혔습니다.",
   },
   /*{
     id: 4,
