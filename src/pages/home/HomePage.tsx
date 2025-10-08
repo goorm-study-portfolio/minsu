@@ -1,22 +1,36 @@
 import Header from "@home/components/Header.tsx";
 import Hero from "@home/components/Hero.tsx";
-import AboutMe from "@home/components/AboutMe.tsx";
-import Skills from "@home/components/Skills.tsx";
-import Archiving from "@home/components/Archiving.tsx";
-import Projects from "@home/components/Projects.tsx";
-import FloatingButton from "@home/components/FloatingButton.tsx";
-import Experience from "@home/components/Experience.tsx";
+import { lazy, Suspense } from "react";
+import FloatingButton from '@home/components/FloatingButton.tsx';
+import { LoaderCircle } from "lucide-react";
+
+const AboutMe = lazy(() => import('@home/components/AboutMe.tsx'));
+const Skills = lazy(() => import('@home/components/Skills.tsx'));
+const Experience = lazy(() => import('@home/components/Experience.tsx'));
+const Archiving = lazy(() => import('@home/components/Archiving.tsx'));
+const Projects = lazy(() => import('@home/components/Projects.tsx'));
+
 
 const HomePage = () => {
   return (
     <>
       <Header />
       <Hero />
-      <AboutMe />
-      <Skills />
-      <Experience />
-      <Archiving />
-      <Projects />
+      <Suspense fallback={<LoaderCircle color="#10b981" />}>
+        <AboutMe />
+      </Suspense>
+      <Suspense fallback={<LoaderCircle color="#10b981" />}>
+        <Skills />
+      </Suspense>
+      <Suspense fallback={<LoaderCircle color="#10b981" />}>
+        <Experience />
+      </Suspense>
+      <Suspense fallback={<LoaderCircle color="#10b981" />}>
+        <Archiving />
+      </Suspense>
+      <Suspense fallback={<LoaderCircle color="#10b981" />}>
+        <Projects />
+      </Suspense>
       <FloatingButton />
     </>
   );
