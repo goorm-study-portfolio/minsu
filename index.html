@@ -1,41 +1,61 @@
 <!doctype html>
 <html lang="ko">
-  <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4693NHR874"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MS Portfolio</title>
+  <meta name="description" content="장민수의 포트폴리오입니다." />
+  <meta name="keywords" content="장민수, 포트폴리오, 개발자, 프론트엔드" />
+  <meta name="author" content="장민수" />
 
+  <!-- ✅ 개발 모드에서는 실행되지 않도록 -->
+  <script type="module">
+    if (import.meta.env.MODE === 'production') {
+      // Google Tag (gtag.js)
+      const gtagScript = document.createElement('script');
+      gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-4693NHR874';
+      gtagScript.async = true;
+      document.head.appendChild(gtagScript);
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
       gtag('config', 'G-4693NHR874');
-    </script>
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-NJ24JJVD');</script>
-    <!-- End Google Tag Manager -->
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MS Portfolio</title>
-    <meta name="description" content="장민수의 포트폴리오입니다." />
-    <meta name="keywords" content="장민수, 포트폴리오, 개발자, 프론트엔드" />
-    <meta name="author" content="장민수" />
-  </head>
-  <body>
-  <!-- Google Tag Manager (noscript) -->
-  <noscript>
-    <iframe
-      src="https://www.googletagmanager.com/ns.html?id=GTM-NJ24JJVD"
-      height="0" width="0" style="display:none;visibility:hidden"
-    >
-    </iframe>
-  </noscript>
-  <!-- End Google Tag Manager (noscript) -->
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+
+      // Google Tag Manager
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        const f = d.getElementsByTagName(s)[0];
+        const j = d.createElement(s);
+        const dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', 'GTM-NJ24JJVD');
+    } else {
+      console.log('🚫 Google Analytics / GTM disabled in dev mode');
+    }
+  </script>
+</head>
+
+<body>
+<!-- noscript 버전도 프로덕션에서만 렌더 -->
+<script type="module">
+  if (import.meta.env.MODE === 'production') {
+    const noscript = document.createElement('noscript');
+    noscript.innerHTML = `
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-NJ24JJVD"
+            height="0" width="0"
+            style="display:none;visibility:hidden">
+          </iframe>`;
+    document.body.prepend(noscript);
+  }
+</script>
+
+<div id="root"></div>
+<script type="module" src="/src/main.tsx"></script>
+</body>
 </html>
