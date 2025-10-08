@@ -1,29 +1,16 @@
-"use client";
-
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styled from "@emotion/styled";
 import { keyframes } from "@emotion/react";
 import { Calendar, MapPin, Award, Users, Trophy, ChevronDown, Building, Zap, Star } from "lucide-react";
 import { useInView } from "@home/feature/hooks/useInView.ts";
+import { type ExperienceType } from "@shared/types";
+import { useQueryClient } from "@tanstack/react-query";
+import { fetchExperience, useGetExperience } from "@home/feature/hooks/useGetExperience.ts";
 
-const ShowMoreIcon = styled(ChevronDown)<{ isExpanded: boolean }>`
-  transform: rotate(${(props) => (props.isExpanded ? "180deg" : "0deg")});
+const ShowMoreIcon = styled(ChevronDown)<{ $isExpanded: boolean }>`
+  transform: rotate(${(props) => (props.$isExpanded ? "180deg" : "0deg")});
   transition: transform 0.3s ease;
 `;
-
-type ExperienceType = "all" | "competition" | "club" | "contest" | "startup" | "Program"
-
-interface Experience {
-  id: number;
-  type: Exclude<ExperienceType, "all">[]; // 배열로 수정
-  title: string;
-  organization: string;
-  period: string;
-  location?: string;
-  description: string;
-  achievement: string;
-  tags: string[];
-}
 
 const getIcon = (type: Exclude<ExperienceType, "all">) => {
   switch (type) {
@@ -62,196 +49,47 @@ const getTypeLabel = (type: ExperienceType) => {
 };
 
 export default function Experience() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const isInView = useInView(sectionRef);
   const [activeFilter, setActiveFilter] = useState<ExperienceType>("all");
   const [isExpanded, setIsExpanded] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
 
-  const experiences: Experience[] = [
-    {
-      id: 1,
-      type: ["club"],
-      title: "UMC 3기 안드로이드 파트 활동",
-      organization: "University MakeUs Challenge",
-      period: "2022.09 - 2023.02",
-      location: "대학교",
-      description: "개발 동아리에서 정기적인 안드로이드 스터디와 프로젝트를 통해 첫 개발 경험을 쌓았습니다.",
-      achievement: "안드로이드 MVVM 패턴 이해 및 적용",
-      tags: ["Android", "첫 개발 동아리 활동", "Kotlin", "MVVM"],
-    },
-    {
-      id: 2,
-      type: ["club", "competition"],
-      title: "UMC 3기 데모데이 대상 수상",
-      organization: "University MakeUs Challenge",
-      period: "2023.02",
-      location: "공덕 프론트원",
-      description: "청소년 스마트폰 습관 개선 앱 개발 프로젝트로 데모데이에서 대상을 수상했습니다.",
-      achievement: "대상 수상 (1등)",
-      tags: ["Android", "Kotlin", "대상", "MVVM", "UMC", "청소년 앱"],
-    },
-    {
-      id: 3,
-      type: ["club"],
-      title: "가천대학교 GDSC 1기 Mobile 파트 활동",
-      organization: "Google Developer Student Clubs",
-      period: "2023.09 - 2024.07",
-      location: "대학교",
-      description: "GDSC에서 모바일 개발 스터디와 공유 세션을 진행하여 안드로이드 개발 능력을 향상시켰습니다.",
-      achievement: "Android Jetpack Library 활용 능력 향상",
-      tags: ["Android", "Kotlin", "GDSC", "Jetpack", "Hilt", "Flow"],
-    },
-    {
-      id: 4,
-      type: ["club"],
-      title: "구름톤 유니브 2기 Android 파트 활동",
-      organization: "Goormthon Univ",
-      period: "2024.02 - 2024.08",
-      location: "대학교",
-      description: "구름톤 유니브에서 안드로이드 개발 스터디와 프로젝트를 통해 최신 기술을 학습하고 적용했습니다.",
-      achievement: "안드로이드 최신 기술 스터디 및 프로젝트 진행",
-      tags: ["Android", "Kotlin", "Hilt", "Flow", "Coroutines"],
-    },
-    {
-      id: 5,
-      type: ["competition"],
-      title: "구름톤 유니브 2기 해커톤 벚꽃톤",
-      organization: "Goormthon Univ",
-      period: "2024.03.13 - 2024.03.24",
-      location: "카카오 AI 캠퍼스",
-      description: "벚꽃톤에서 짧은 기간에 걸쳐 안드로이드 앱 개발과 협업, 문제 해결 능력을 향상시켰습니다.",
-      achievement: "첫 해커톤 경험",
-      tags: ["구름톤 유니브", "벚꽃톤", "안드로이드", "해커톤"],
-    },
-    {
-      id: 6,
-      type: ["startup"],
-      title: "가천대학교 창업대학 GCS 4기",
-      organization: "가천대학교 스타트업칼리지",
-      period: "2024.03 - 2024.08",
-      location: "대학교",
-      description: "아이디어 구체화 및 창업 모델 개발을 위한 교내 창업 교육 프로그램에 참여했습니다.",
-      achievement: "구매 전환 4% 및 매출 발생",
-      tags: ["창업", "스타트업", "사업 모델", "아이디어 구체화", "MVP 테스트", "마케팅"],
-    },
-    {
-      id: 7,
-      type: ["startup"],
-      title: "가천대학교 창업대학 GCS 4기 학부제 과정",
-      organization: "가천대학교 스타트업칼리지",
-      period: "2024.08 - ing",
-      location: "대학교",
-      description: "가천대학교 창업대학 학부제 과정에 참여하여 창업 아이템 개발 및 솔루션 테스트를 진행하고 있습니다.",
-      achievement: "MVP 테스트 참여 1100명 완료 60%, Zapier를 통한 자동화",
-      tags: ["창업", "스타트업", "MVP", "아이디어 검증", "자동화", "Zapier"],
-    },
-    {
-      id: 8,
-      type: ["contest", "startup"],
-      title: "교내 공모전 창업 이룸 프로젝트",
-      organization: "가천대학교 아르테크네센터",
-      period: "2024.08 - 2025.01",
-      location: "대학교",
-      description: "창업 아이디어 공모전에 참가하여 아이디어를 구체화하고 검증 및 MVP 개발을 진행했습니다.",
-      achievement: "최우수상 수상",
-      tags: ["교내 공모전", "창업 활동", "창업 공모전", "최우수상"],
-    },
-    {
-      id: 9,
-      type: ["contest", "startup"],
-      title: "교내 공모전 꿈꾸는 기업메이커",
-      organization: "가천대학교 아르테크네센터",
-      period: "2024.09 - 2024.11",
-      location: "대학교",
-      description: "팀 별 기업, 회사 선정 후 경영 목표와 목표에 맞는 활동을 실행하는 교내 공모전에 참가했습니다.",
-      achievement: "장려상 수상",
-      tags: ["교내 공모전", "기업메이커", "장려상", "창업 활동"],
-    },
-    {
-      id: 10,
-      type: ["club"],
-      title: "구름톤 유니브 3기 학교 대표",
-      organization: "Goormthon Univ",
-      period: "2024.08 - 2025.01",
-      location: "대학교",
-      description: "구름톤 유니브 3기에서 학교 대표로 활동하며, React 공식 문서 Deep Dive 스터디를 진행했습니다.",
-      achievement: "대표 활동을 통한 리더십 및 커뮤니케이션 능력 향상",
-      tags: ["구름톤 유니브", "학교 대표", "React", "소통"],
-    },
-    {
-      id: 11,
-      type: ["competition"],
-      title: "구름톤 유니브 3기 해커톤 단풍톤",
-      organization: "Goormthon Univ",
-      period: "2024.11.17 - 2024.11.24",
-      location: "카카오 AI 캠퍼스",
-      description: "단풍톤에서 첫 리액트 해커톤 경험을 쌓으며, 팀원들과 협업하여 프로젝트를 완성하고 배포했습니다.",
-      achievement: "React 해커톤 첫 경험 및 배포",
-      tags: ["구름톤 유니브", "단풍톤", "React", "해커톤", "TypeScript"],
-    },
-    {
-      id: 12,
-      type: ["club"],
-      title: "UMC 7기 Web 파트 활동",
-      organization: "University MakeUs Challenge",
-      period: "2024.09 - 2025.02",
-      location: "대학교",
-      description: "개발 동아리에서 정기적인 React 스터디와 스터디장을 맡아 팀원을 이끌었습니다.",
-      achievement: "React 생태계 이해 및 라이브러리 활용 능력 향상",
-      tags: ["React", "TypeScript", "UMC", "Web 개발", "스터디장"],
-    },
-    {
-      id: 14,
-      type: ["contest"],
-      title: "제 7회 전국 청년 아이디어톤 대회",
-      organization: "수원특례시X아주대학교",
-      period: "2024.11.09 - 2025.11.10",
-      location: "수원유스호스텔",
-      description: "시민체감 수원형 도시안전 서비스 아이디어톤 대회에 참가하여 도시 안전 관련 아이디어를 제안했습니다.",
-      achievement: "본선 진출 팀중 단독 1인팀, 장려상 수상",
-      tags: ["아이디어톤", "도시안전", "1인팀", "장려상"],
-    },
-    {
-      id: 15,
-      type: ["Program", "startup"],
-      title: "경기청년 갭이어 프로그램",
-      organization: "경기도미래세대재단, 한국생산성본부",
-      period: "2025.06 - ing",
-      location: "경기도",
-      description: "경기 청년 갭이어 프로그램에 최종 합격하여 창업 아이템 개발 및 솔루션 테스트를 준비하고 있습니다.",
-      achievement: "최종 합격의 경우 1인당 500만원 지원, 총 2000만원 지원금 예정",
-      tags: ["경기청년", "갭이어", "프로그램", "지원금", "창업"],
-    },
-    {
-      id: 16,
-      type: ["Program", "startup"],
-      title: "하나 소셜벤처 유니버시티",
-      organization: "하나금융그룹, 언더독스",
-      period: "2025.07 - 2025.07",
-      location: "경기도",
-      description:
-        "하나금융그룹의 소셜벤처 유니버시티 프로그램에 참여하여 사회적 가치 창출을 위한 창업 교육을 받고 있습니다.",
-      achievement: "교육 수료 50만원 지원 및 우수팀 선정 시 300만원 지원",
-      tags: ["하나금융그룹", "소셜벤처", "창업 교육", "사회적 가치", "지원금"],
-    },
-    {
-      id: 16,
-      type: ["Program", "startup"],
-      title: "Tech for Impact",
-      organization: "카카오 임팩트",
-      period: "2025.09 - ing",
-      location: "서울대, 카이스트, 가천대",
-      description:
-        "카카오 임팩트 재단에서 실시하는 Tech for Impact에 참여하여 사회적 가치 창출을 위한 교육을 받고 있습니다.",
-      achievement: "교육 수료 50만원 지원 및 우수팀 선정 시 300만원 지원",
-      tags: ["카카오 임팩트", "임팩트", "창업 교육", "사회적 가치"],
-    },
-  ];
+  const isNearView = useInView(sectionRef, {
+    threshold: 0,
+    root: null,
+    rootMargin: '300px 0px 300px 0px',
+    once: true,
+  });
+
+  // 실제 에니메이션 트리거 InView
+  const isInView = useInView(sectionRef, {
+    threshold: 0.2,
+    root: null,
+    rootMargin: '0px 0px -20% 0px',
+    once: true,
+  });
+
+  const queryClient = useQueryClient();
+
+  useEffect(() => {
+    if (isNearView) {
+      queryClient.prefetchQuery({
+        queryKey: ['experiences'],
+        queryFn: () => fetchExperience(),
+        staleTime: 1000 * 60 * 3,
+      });
+    }
+  }, [isNearView, queryClient]);
+
+  const { data: experiences } = useGetExperience({
+    enabled: isInView,
+    staleTime: 1000 * 60 * 3,
+  });
+
 
   // 필터링 로직 수정
-  const filteredExperiences = experiences.filter(
+  const filteredExperiences = experiences ? experiences.filter(
     (exp) => activeFilter === "all" || exp.type.includes(activeFilter as Exclude<ExperienceType, "all">),
-  );
+  ) : [];
 
   const INITIAL_SHOW_COUNT = 8;
   const displayedExperiences = isExpanded ? filteredExperiences : filteredExperiences.slice(0, INITIAL_SHOW_COUNT);
@@ -260,8 +98,9 @@ export default function Experience() {
 
   // 각 타입별 개수 계산 함수 수정
   const getTypeCount = (type: ExperienceType) => {
-    if (type === "all") return experiences.length;
-    return experiences.filter((exp) => exp.type.includes(type as Exclude<ExperienceType, "all">)).length;
+    if (!experiences) return 0;
+    if (type === "all") return experiences?.length;
+    return experiences?.filter((exp) => exp.type.includes(type as Exclude<ExperienceType, "all">)).length;
   };
 
   return (
@@ -344,7 +183,7 @@ export default function Experience() {
           {filteredExperiences.length > INITIAL_SHOW_COUNT && (
             <ShowMoreButton inView={isInView} onClick={() => setIsExpanded(!isExpanded)}>
               {isExpanded ? "접기" : `${filteredExperiences.length - INITIAL_SHOW_COUNT}개 더 보기`}
-              <ShowMoreIcon isExpanded={isExpanded} />
+              <ShowMoreIcon $isExpanded={isExpanded} />
             </ShowMoreButton>
           )}
         </ExperienceContainer>
