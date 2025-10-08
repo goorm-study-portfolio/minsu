@@ -1,32 +1,37 @@
-import { type RefObject, useEffect, useState } from "react";
+import { type RefObject, useEffect, useState } from 'react';
+
+type Options = {
+  threshold?: number | number[];
+  once?: boolean;
+  root?: Element | null;
+  rootMargin?: string;
+};
 
 export const useInView = (
   ref: RefObject<Element | null>,
-  options = {
-    threshold: 0.1, once: true,
-  }) => {
+  { threshold = 0.1, once = false, root = null, rootMargin = '0px 0px -20% 0px' }: Options = {}
+) => {
   const [isInView, setIsInView] = useState(false);
 
   useEffect(() => {
-    if (!ref.current) return;
+    const el = ref.current;
+    if (!el) return;
 
-    const observer = new IntersectionObserver(([entry]) => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
         if (entry.isIntersecting) {
           setIsInView(true);
-          if (options.once) {
-            observer.disconnect();
-          }
-        } else if (!options.once) {
+          if (once) observer.disconnect();
+        } else if (!once) {
           setIsInView(false);
         }
       },
-      {
-        threshold: options.threshold,
-      },
+      { threshold, root, rootMargin }
     );
 
-    observer.observe(ref.current);
-  }, [ref, options.threshold, options.once]);
+    observer.observe(el);
+    return () => observer.disconnect(); // ✅ cleanup
+  }, [ref, threshold, once, root, rootMargin]);
 
   return isInView;
 };
