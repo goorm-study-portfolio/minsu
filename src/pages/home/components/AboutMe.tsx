@@ -2,7 +2,7 @@ import { keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
 import { useEffect, useRef } from "react";
 import { useInView } from "@home/feature/hooks/useInView.ts";
-import { fetchAboutMe, useGetAboutMe } from "@home/hooks/useGetAboutMe.ts";
+import { fetchAboutMe, useGetAboutMe } from "@home/feature/hooks/useGetAboutMe.ts";
 import { useQueryClient } from "@tanstack/react-query";
 
 const AboutMe = () => {

@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { useInView } from "../feature/hooks/useInView";
 import { ExternalLink, Github, X } from "lucide-react";
 import type { Project } from "@shared/types";
-import { fetchProjects, useGetProjects } from "@home/hooks/useGetProjects.ts";
+import { fetchProjects, useGetProjects } from "@home/feature/hooks/useGetProjects.ts";
 import { useQueryClient } from "@tanstack/react-query";
 
 const Projects = () => {

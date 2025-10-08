@@ -2,7 +2,7 @@ import { css, keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
 import { useEffect, useRef } from "react";
 import { useInView } from "@home/feature/hooks/useInView.ts";
-import { getSkills, useGetSkills } from "@home/hooks/useGetSkills.ts";
+import { getSkills, useGetSkills } from "@home/feature/hooks/useGetSkills.ts";
 import { useQueryClient } from "@tanstack/react-query";
 
 const Skills = () => {
