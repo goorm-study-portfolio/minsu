@@ -1,80 +1,67 @@
-import { keyframes } from "@emotion/react";
+import { css, keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useInView } from "@home/feature/hooks/useInView.ts";
-
-const skillCategories = [
-  {
-    title: "Language",
-    skills: ["TypeScript", "JavaScript", "Kotlin", "Python"],
-  },
-  {
-    title: "Front",
-    skills: [
-      "React",
-      "Next.js",
-      "styled-components",
-      "Emotion CSS",
-      "Tailwind CSS",
-      "Zustand",
-      "TanstackQuery",
-      "Redux-toolkit",
-      "React-Hook-Form",
-      "Zod",
-      "WebView",
-      "Vercel",
-    ],
-  },
-  {
-    title: "Android",
-    skills: ["DataBinding", "Flow", "Hilt", "Retrofit", "Coroutine", "DataStore", "ViewModel"],
-  },
-  {
-    title: "Collaborations",
-    skills: ["Git", "GitHub", "Notion", "Discord", "Slack"],
-  },
-  /*{
-    title: "Backend",
-    skills: ["NestJS", "FastAPI"],
-  },
-  {
-    title: "Database",
-    skills: ["PostgreSQL", "MySQL"],
-  },*/
-  {
-    title: "Backend",
-    skills: ["FastAPI", "AWS EC2", "AWS Lambda", "AWS API Gateway", "Docker"],
-  },
-  {
-    title: "Tools",
-    skills: ["Figma", "Postman", "Zapier", "Google Analytics"],
-  },
-];
+import { getSkills, useGetSkills } from "@home/hooks/useGetSkills.ts";
+import { useQueryClient } from "@tanstack/react-query";
 
 const Skills = () => {
-  const sectionRef = useRef<HTMLElement>(null);
-  const isInView = useInView(sectionRef);
+    const sectionRef = useRef<HTMLElement>(null);
+    const isNearView = useInView(sectionRef, {
+      threshold: 0,
+      root: null,
+      rootMargin: '300px 0px 300px 0px',
+      once: true,
+    });
 
-  return (
-    <Section id="skills" ref={sectionRef}>
-      <Container>
-        <SectionTitle inView={isInView}>Skills</SectionTitle>
-        <SkillGrid>
-          {skillCategories.map((skillCategory, index) => (
-            <SkillCard key={index} inView={isInView} delay={index * 150}>
-              <SkillCardTitle>{skillCategory.title}</SkillCardTitle>
-              <SkillList>
-                {skillCategory.skills.map((skill, skillIndex) => (
-                  <SkillItem key={skillIndex}>{skill}</SkillItem>
-                ))}
-              </SkillList>
-            </SkillCard>
-          ))}
-        </SkillGrid>
-      </Container>
-    </Section>
-  );
-};
+    const isInView = useInView(sectionRef, {
+      threshold: 0.2,
+      root: null,
+      rootMargin: '0px 0px -20% 0px',
+      once: true,
+    });
+
+    const queryClient = useQueryClient();
+
+    useEffect(() => {
+      if (isNearView) {
+        queryClient.prefetchQuery({
+          queryKey: ['skills'],
+          queryFn: () => getSkills(),
+          staleTime: 1000 * 60 * 3,
+        });
+      }
+    }, [isNearView, queryClient]);
+
+    const { data: skillCategories } = useGetSkills({
+      enabled: isInView,
+      staleTime: 1000 * 60 * 3,
+      refetchOnMount: false,
+      refetchOnWindowFocus: false,
+    });
+
+
+    return (
+      <Section id="skills" ref={sectionRef}>
+        <Container>
+          <SectionTitle inView={isInView}>Skills</SectionTitle>
+          <SkillGrid>
+            {skillCategories?.map((skillCategory, index) => (
+              <SkillCard key={index} inView={isInView} delay={index * 150}>
+                <SkillCardTitle>{skillCategory.title}</SkillCardTitle>
+                <SkillList>
+                  {skillCategory.skills.map((skill, skillIndex) => (
+                    <SkillItem key={skillIndex}>{skill}</SkillItem>
+                  ))}
+                </SkillList>
+              </SkillCard>
+            ))}
+          </SkillGrid>
+        </Container>
+      </Section>
+    );
+  }
+;
 
 export default Skills;
 
@@ -134,11 +121,14 @@ const SkillCard = styled.div<{ inView: boolean; delay: number }>`
   padding: 1.5rem;
   height: 100%;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-  opacity: 0;
 
-  animation: ${fadeIn} 0.5s ease forwards;
-  animation-delay: ${(props) => props.delay}ms;
-  animation-play-state: ${(props) => (props.inView ? "running" : "paused")};
+  opacity: ${p => (p.inView ? 1 : 0)};
+  transform: translateY(${p => (p.inView ? '0' : '20px')});
+
+  ${p => p.inView && css`
+    animation: ${fadeIn} 0.5s ease forwards;
+    animation-delay: ${p.delay}ms;
+  `}
 `;
 
 const SkillCardTitle = styled.h3`
