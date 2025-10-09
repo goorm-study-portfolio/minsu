@@ -6,6 +6,7 @@ import ImgCohaus from "@img/img-cohaus.png";
 import ImgPortfolio from "@img/img-portfolio.png";
 import ImgPureum from "@img/img-pureum.png";
 import ImgYourMode from "@img/img-yourmode.png";
+import ImgStyleMe from "@img/img-style-me.png";
 
 export type Project = {
   id: number
@@ -46,6 +47,19 @@ export const projects: Project[] = [
     githubLink: "https://github.com/Your-Mode/your-mode-web",
     demoLink: "https://www.yourmode.co.kr/",
     lessons: "MVP 테스트를 통해 사용자 피드백을 받고, 이를 바탕으로 서비스 개선 방향을 설정할 수 있었습니다.\n또한, OpenAI API와 FastAPI를 활용하여 AI 기반의 체형 진단 및 패션 컨텐츠 생성 기능을 구현하였습니다.\n사용자에게 만족스러운 경험을 제공하기 위해 단순한 기능 제공이 아닌 사용자에게 실질적인 가치를 제공하기 위한 고민과 노력의 소중함을 배울 수 있었습니다.",
+  },
+  {
+    id: 3,
+    title: "Style Me",
+    description: "AI 챗봇 기반 체형 분석 서비스",
+    thumbnail: ImgStyleMe,
+    technologies: ["Next.js", "TypeScript", "Emotion CSS", "Zustand", "TanstackQuery", "React-Hook-Form", "Vercel", "OpenAI API", "Python", "FastAPI", "AWS Lambda", "Firebase", "Google Analytics"],
+    summary: "YourMode 사이트에 도입할 체형 진단 기능을 사용자 테스트 및 개선을 위한 사이트로 개발하였습니다.\n인스타 마케팅 활동을 통해 200명 정도의 사용자를 유입시켜 직접 개발한 ai 챗봇 서비스를 사용자들에게 제공하였습니다.",
+    features: ["AI 기반 체형 분석 및 진단", "개인 맞춤형 스타일링 추천"],
+    contribution: "서비스 아이디어 기획 및 MVP 테스트 설계 및 운영, 사용자 시나리오 정의하였습니다.\nOpenAI Assistant와 FastAPI를 연동해 AI 기반 챗봇을 구현하였습니다.\nAWS Lamda 기반 FastAPI 서버 배포로 비용 효율성을 확보했습니다.\n사용자 사용 피드백 과정을 거쳐 진단 서비스를 개선하였습니다.",
+    githubLink: "https://github.com/Your-Mode/style-me",
+    demoLink: "https://style-me-wine.vercel.app/",
+    lessons: "약 200명의 유저 유입 및 유입된 유저의 30% 이상의 유저가 진단 결과 화면까지 도달하였습니다.\n서비스를 이용한 유저를 대상으로 피드백 과정을 거쳐 서비스 개선 및 재배포하였습니다.\n기획-개발-배포-분석의 전과정을 단독 수행하며 Fullstack 역량을 강화했습니다.",
   },
   {
     id: 3,
