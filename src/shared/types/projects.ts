@@ -62,7 +62,7 @@ export const projects: Project[] = [
     lessons: "약 200명의 유저 유입 및 유입된 유저의 30% 이상의 유저가 진단 결과 화면까지 도달하였습니다.\n서비스를 이용한 유저를 대상으로 피드백 과정을 거쳐 서비스 개선 및 재배포하였습니다.\n기획-개발-배포-분석의 전과정을 단독 수행하며 Fullstack 역량을 강화했습니다.",
   },
   {
-    id: 3,
+    id: 4,
     title: "Buddy - 나만의 든든한 자립 친구",
     description: "자립청년 성장 지원 플랫폼",
     thumbnail: ImgBuddy,
@@ -74,7 +74,7 @@ export const projects: Project[] = [
     lessons: "React와 TypeScript를 활용한 첫 프론트엔드 팀 프로젝트로, Zustand를 사용하며 Context, Redux 보다 쉽고 간편한 상태 관리 코드를 작성할 수 있었습니다.\n또한 TanstackQuery를 사용해 API 요청과 캐싱을 효율적으로 사용하는 방법을 익힐 수 있었습니다.\n마지막으로 React-Hook-Form을 사용하여 반복적이고 긴 코드를 효율적이고 간결하게 작성할 수 있었습니다.\n결론적으로 세 라이브러리를 통해 프론트엔드 개발 생산성을 높일 수 있었습니다.",
   },
   {
-    id: 4,
+    id: 5,
     title: "다시온 - 오늘도 찾아온 단골손님",
     description: "2025 Kakao X Goorm 시즌톤 사장님만을 위한 단골 관리 솔루션 서비스",
     thumbnail: ImgDasion,
@@ -100,7 +100,7 @@ export const projects: Project[] = [
     lessons: "대용량 데이터 처리와 렌더링 최적화 기법을 습득했습니다.",
   },*/
   {
-    id: 5,
+    id: 6,
     title: "Cohaus",
     description: "취약계층 주거 지원 플랫폼",
     thumbnail: ImgCohaus,
@@ -112,7 +112,7 @@ export const projects: Project[] = [
     lessons: "안드로이드 공식 문서를 바탕으로 클린 아키텍처와 MVVM 패턴을 적용하여 개발하였습니다.\n이 과정에서 안드로이드 앱 개발의 구조화와 유지보수성을 높이는 방법을 배웠습니다.\n또한, Hilt를 사용하여 의존성 주입을 구현하고, Retrofit과 Coroutine, Flow를 활용하여 비동기 API 통신을 효율적으로 처리하는 방법을 익혔습니다.\n최대한 공식문서에서 권장하는 개발 가이드라인을 준수하기 위해 노력하였고, 그 결과물 중 AAC와 DataStore 등이 있으며, Flow를 학습한 후 DataStore 적용하고 기존 LiveData를 제거하며 DataSource, Repository, ViewModel, View Class 등을 점진적으로 개선시켜 나가는 과정은 기존 코드를 리팩토링하는 소중한 경험이 되었습니다.",
   },
   {
-    id: 6,
+    id: 7,
     title: "Portfolio",
     description: "나만의 포트폴리오",
     thumbnail: ImgPortfolio,
@@ -125,7 +125,7 @@ export const projects: Project[] = [
     lessons: "나를 표현할 수 있는 포트폴리오가 무엇인지 고민하고, 지속적으로 개선해 나가고 있는 포트폴리오입니다.",
   },
   {
-    id: 7,
+    id: 8,
     title: "푸름",
     description: "스마트폰 사용 습관 개선 서비스",
     thumbnail: ImgPureum,
@@ -137,7 +137,7 @@ export const projects: Project[] = [
     lessons: "대학교 진학 후 1학년 처음으로 진행한 안드로이드 프로젝트입니다. 이 프로젝트를 통해 협업과 소통 방식의 중요성 그리고 개발 용어 및 기술에 대해 다양하게 배울 수 있었습니다. 특히, 안드로이드 개발에 필요한 필수적인 기술 스택 DataBinding, Hilt, Coroutine, ViewModel 등을 알 수 있었고, 공식 문서의 중요성을 느낄 수 있었습니다.",
   },
   {
-    id: 8,
+    id: 9,
     title: "YourMode - 당신만의 스타일링 멘토",
     description: "창업대학 창업 활동",
     thumbnail: ImgYourMode,
