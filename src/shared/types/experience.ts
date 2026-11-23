@@ -150,7 +150,7 @@ export const experiences: Experience[] = [
     type: ["contest"],
     title: "제 7회 전국 청년 아이디어톤 대회",
     organization: "수원특례시X아주대학교",
-    period: "2024.11.09 - 2025.11.10",
+    period: "2024.11.09 - 2024.11.10",
     location: "수원유스호스텔",
     description: "시민체감 수원형 도시안전 서비스 아이디어톤 대회에 참가하여 도시 안전 관련 아이디어를 제안했습니다.",
     achievement: "본선 진출 팀중 단독 1인팀, 장려상 수상",
